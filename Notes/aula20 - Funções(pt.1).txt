@@ -1,0 +1,228 @@
+14:18 04/07/2022 - Bora estudarrrrr
+
+FUNÇÕES - Usando "def" em python 
+
+Basicamente, de acordo com o professor, as funções, em todas as linguagens de programação, estão relacionadas a uma palarinha
+mágica, que é a palavra rotina. Rotina expressa algo que se repete com uma constância, com consistência. Que coisas fazemos
+constantemente?
+
+E no python, já usamos diversas funções, tais como "print()", "input()", "len()", "int()", "float()". Todas essas e mais outras
+são funções, ou melhor, funcionalidades. Funções como estas já existem no python e não precisam de complementos para funcionarem
+da forma correta. Porém, estas não satisfazem todas as nossas necessidades durante a programação.
+
+Ex: Criar linhas divisórias na tela, como "print('='*50)", são também consideradas rotinas, pois se tratam de comandos feitos
+com frequência durante as escritas de nossos códigos. Mas, até para esta rotina eu posso utilizar uma função para abranger esta
+parte do cógigo, como criar uma função "mostralinha()", usando o "def".
+
+"Def" significa definição de função. É a palavrinha necessária para criar uma função personalizada ao modo particular de escrita
+do programador, ou seja, é criada uma função que não existia antes no python para suprir uma necessidade própria.
+
+-------------------------------------
+	SISTEMA DE ALUNOS
+-------------------------------------
+
+Veja: essas linha são muito utilizadas durante o meu desenvolvimento de programas. Embora representem um bom recurso visual,
+elas ocupam nitidamente um espaço no código:
+
+print('-------------------------------------')
+print('		SISTEMA DE ALUNOS           ')
+print('-------------------------------------')
+
+Pois, em python, se utiliza funções para representar cada um desses elementos.
+Veja o quão repetitivo, penoso, custoso e "outros-adjetivos" este processo é.
+Uma função se faz urgente!
+
+Seria interessante, em situações semelhantes, se perguntar: "existem comandos iguais? Eles são repetitivos?"
+
+O só o print de linhas para um título ocorre 2 vezes, podendo se expandir caso seja necessário acrescentar outros títulos
+
+Se eu conseguir transformar isso numa rotina, eu escrevo ele apenas uma vez. Isto nada mais é do que uma rotina! 
+Bom, eu escrevo o comando uma vez e o defino como função:
+
+def mostralinha():
+	print('-------------------------------')
+
+*Todas as funções de python são identificadas por dois parênteses no final, um que abre, outro que fecha.
+*Perceba o uso de dois pontos ":" e o uso da tecla "TAB".
+
+O comando, que antes se valia de muitas funções print(), foi aprimorado com uma nova função ("mostralinha()").
+Veja sua nova escrita:
+
+def mostralinha():
+	print('-------------------------------')
+
+mostralinha()
+print('		SISTEMA DE ALUNOS	')
+mostralinha()
+
+Por mais que exista um print() lá em cima, este não será apresentado pelo programa, pois, obviamente, ele está incerido
+no "def", isto é, na definição de uma nova função. O que será apresentado primeiro é justamente a função "mostralinha()".
+Assim como em um laço de iteração, o programa vai ler a nova função e "subir" para procurar sua definição, para assim executá-la
+corretamente mostrando, finalmente, o print(). Depois disso, desce até o outro comando, executa-o e, vendo a novamente a função
+criada, sobe para executar o print() definido como parte da função.
+
+O def é acionado desta maneira. Mas, calma... ele é bem mais poderoso do que isso que acabamos de ver.
+
+Podemos trabalhar com o "def" usando PARÂMETROS:
+
+Você deve ter visto - e, talvez, se frustrado - que não existe a maior automatização do mundo na hora de definir uma nova função.
+Ainda assim, ela é bem útil. Mas, para alegria de todos, vamos repetir novamente o processo de escrita de títulos:
+
+print('-------------------------------------')
+print('		SISTEMA DE ALUNOS           ')
+print('-------------------------------------')
+
+print('-------------------------------------')
+print('		LISTA DE APROVADOS          ')
+print('-------------------------------------')
+
+print('-------------------------------------')
+print('		PROCESSO SELETIVO           ')
+print('-------------------------------------')
+
+Veja que, ao expandir o processo de escrita de títulos, existe muita repetição em relação ao formato em que estes títulos
+são escritos: eles seguem um padrão "linha-título-linha". Isto nos levaria a pensar que a única coisa que de fato muda é
+a parte escrita do título, isto é, seu conteúdo. 
+
+Por causa disso, fica fácil perceber que, ainda que se defina uma nova função, a existência de um bloco de estrutura semelhante
+é constante na hora de escrever um título desta forma, um bloco "linha-título-linha". Ora, repito esta expressão porque, para sua
+felicidade, é possível automatizar este processo e fazer com que somente a parte escrita do título seja modificada de acordo com
+as necessidades do escritor.
+
+Para suprir este tipo de necessidade, os parâmetros se fazem mais do que necessários.
+
+def mensagem(msg):
+	print('-------------------------------------')
+	print(msg)
+	print('-------------------------------------')
+
+mensagem('SISTEMA DE ALUNOS')
+
+Entendeu..? Não? Pois lhe explico: desta vez, a recém-definida função "mensagem()" recebeu um parâmetro, chamado "msg". Este parâmetro
+é inserido dentro dos parênteses da função, daí a importância de tê-los na hora de defini-las. Quando a função mensagem(msg) foi definida,
+foram colocados, também, algumas funções print() seguindo o formato "linha-título-linha". Perceba que um destes print() recebe o parâmetro
+"msg", ou melhor, vai mostrar este parâmetro quando o def for acionado.
+
+Assim, quando eu quiser escrever um título seguindo esta formatação específica, basta escrever a nova função mas acrescentando a mensagem em
+texto que eu quiser como parâmetro. Isto significa que o parâmetro será substituído pela string, ou qualquer coisa, que eu inserir.
+
+No mesmo esquema de funcionamento: Quando eu digitar a nova função, modificando o seu parâmetro, o def será acionado e fará funcionar o seu
+conteúdo, alterando o parâmetro de acordo com a primeira modificação feita, ou melhor, de acordo com a necessidade do escritor.
+
+O conteúdo colocado no lugar do parâmetro será copiado diretamente em seu lugar.
+
+>> Resultado:
+-------------------------------------
+	 SISTEMA DE ALUNOS           
+-------------------------------------
+
+Vamos supor um outro exemplo: (com matemática)
+
+a = 6
+b = 3
+s = a + b
+print(s)
+
+a = 7
+b = 4
+s = a + b
+print(s)
+
+Sinta o quão repetitivo este processo é 
+Evidentemente que é possível automatizar este processo usando def
+Seria muito bom se existisse uma função soma(a, b) (e existe, com a lib operator)
+
+def soma(a, b):
+	print(f'A = {a}; B = {b}')
+	s = a + b
+	print(s)
+
+
+soma(6, 3) >> Resultado: 9
+soma(7, 4) >> Resultado: 11
+ Eu posso explicitar qual parâmetro eu quero utilizar
+Ex:
+soma(a=6, b=3) >> A = 6; B = 3
+ou
+soma(b=6, a=3) >> A = 3; B = 6
+
+Mas, e se eu quiser somar mais de um número? Se eu quiser somar 3 números?
+Posso empacotar parâmetros!
+
+Suponhamos uma contagem:
+
+def contador(*núm):
+	
+
+
+contagem(5, 7, 3, 1, 4)
+contador(8, 4, 7)
+
+O asterisco "*" indica que mais valores serão aceitos, ou podem. Isto confere
+elasticidade ao programa
+
+Vamos supor uma funcionalidade "contador", em que eu incluo diversos números. Algumas 
+linguagens não permitem realizar este empacotamento, o python sim!
+
+Com o * eu posso pegar um ou vários parâmetros e jogá-los dentro de "núm"
+
+Se eu der um print(num), o python me mostrará uma TUPLA contendo os valores postos nos parâmetros
+
+Sabendo que os valores postos na função são nada mais nada menos que um parâmetro, eu posso calcular o
+comprimento deste parâmetro, ou dissecar seus valores com um laço "for":
+
+def contador(*num):
+	tamanho = len(num)
+	print(f'Recebi os números {num}. São {tamanho} no total')
+	print('Lista com os valores:')
+	for valores in num:
+		print(f'-{num}', end=' ')
+	print()
+
+
+contador(4, 5, 7, 1)
+contador(10, 23)
+contador(6, 8, 2, 4, 7, 9)
+
+Como manipulo Tuplas, a situação fica mais sem graça. Vamos mecher com listas, então!
+
+Suponhamos uma lista com diversos valores, os quais são identificados por índices numéricos.
+
+valores = [7, 2, 5, 0, 4] >> índices de 0 até 4
+
+Se usar a função print(), obterá os valores como estão mostrados
+Mas, se eu quiser dobrar o valor dos números inseridos, multiplicando cada um por 2?
+
+Seria interessante que existisse uma função que dobrasse estes valores, como um "dobra(valores)"
+
+def dobra(lst):  # Não é "list", pois sou eu quem defino os parâmetros
+	pos = 0
+	while pos < len(lst):
+		lst[pos] *= 2
+		pos += 1
+
+
+valores = [7, 2, 5, 0, 4]
+dobra(valores)
+print(valores)
+
+Quando é colocado a lista "valores" como parâmetro, tudo o que for feito em "lst" vai interferir nesta lista, já que ela é 
+vinculada ao parâmetro, ou seja, ela recebe as características dele.
+
+Posso misturar a ideia do desempacotamento com a de soma de valores
+
+def soma(*conjunto):
+	s = 0
+	for numero in conjunto:
+		s += numero
+	print(f'A soma dos números {conjunto} é igual a {s}')
+#
+# python deseja duas linhas de separação entre a definição e o código principal
+soma(3, 5)
+soma(7, 4, 7, 9)
+ 
+Em casos assim, caso eu queria contar a quantidade de números postos no parâmetro, é preferível que eu use a estratégia do contador,
+pelo simples fato de que, caso nenhum número seja colocado, se eu utilizar funções que analisam o mesmo parâmetro, o programa mostra
+um erro. Por exemplo, não é possível usar um len(parâmetro), se o parrâmetro não possuir nenhum valor inserido. Caso exista um contador
+e atribua 0 à variável dele, o programa mostrará que 0 valores foram inseridos.
+

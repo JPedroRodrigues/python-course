@@ -1,0 +1,117 @@
+17:19 19/06/2022
+
+Normalmente, as linguagens de programação possuem 3 estruturas
+de repetição: o "for", o "while e o "repeat"/"do while"
+
+No caso do Python, existem só a "for" e "while"
+Mas ainda dá para replicar, ou simular o efeito das outras
+
+Bom, vamos às teorias!!
+
+Na última aula, o professor Gustavo Guanabara (GG) tinha ilustrado
+a situação em que eu não sei o número de plataformas, tampouco quantas moedas
+e buracos existem no meio do percurso.
+Por esta razão, usaríamos a estrutura "while" para guiar o Guanabarinha em sua jornada.
+(Era uma estrutura de repetição/iteração com teste lógico)
+
+Agora vamos pensar em um cenário em que eu sequer vejo o fim do mapa
+Nele, há uma plataforma flutuante, além dos buracos e moedas espalhados aleatoriamente
+pelo ambiente.
+Nesta plataforma há um troféu, que encerra o jogo caso o jogador o pegue, como sinal de vitória
+Bom, considerando que a estrutura while é infinita, o jogador ficaria andando, pulando e pegando
+moedas infinitamente, o que não é o objetivo.
+Se eu, então, instalar um "if" nesta estrutura, ainda que o troféu fosse pego, ele não encerraria
+o looping criado pelo while.
+
+O que eu quero, justamente, é interromper o programa quando esta condião for cumprida.
+O comando usado para isto é o stop, que desvia a execução para o lado de fora do laço de repetição
+
+Reescrevendo o exemplo da aula passada:
+
+while True:
+	if bloco:
+		passo
+	if buraco:
+		pula
+	if moeda:
+		pega
+	if trofeu:
+		pula
+		break --> É o comando de "stop"
+pega
+
+Esse while True é um looping infinito
+Caso o programa não chegue no break, ele vai rodar pra sempre, repetindo novamente a estrutura criada
+O comando break serve para que o laço chegue ao fim
+Ele "joga para fora da estrutura de repetição"
+
+Mas isso resolve o que extamamente? Não bastava usar o teste lógico para definir um limite para a estrutura
+while?
+
+A verdade é que no teste lógico há uma obrigatoriedade nas leituras dos componentes
+Não existe uma validação, um teste, que permita interromper o ciclo quando eu quiser
+Se no laço é lido o número 999, mesmo que ele seja uma flag, isto é, um componente que desfaça o laço,
+ele é contabilizado na soma e no contador criados. Isto nos força a fazer "gambiarras" no código, inserindo
+um "soma - 999" para retirar a soma do número indesejado.
+
+Neste caso, a solução estaria no laço while infinito, pois nele eu posso definir com clareza qual é a condição
+de parada sem que ela seja contabilizada nos cálculos.
+Veja:
+
+soma = 0
+while True:
+	n = int(input('Digite um número: '))
+	if n == 999:
+		break
+	soma += n
+print('A soma dos valores digitados é: {}'.format(soma))
+
+Ou seja:                            
+|Logo depois que o número for lido,  |
+|eu tenho a oportunidade de parar o  |
+|programa SE o número for igual a 999|
+
+15:25 21/06/2022
+
+No exercício 70, em que eu analiso as compras, na hora de dizer o nome do produto mais barato
+eu posso me aproveitar da seguinte estratégia:
+
+Pcheapest = Ncheapest = contador = 0
+while True:
+	name = str(input('Nome do produto: '))
+	price = float(input('Preço: '))
+	contador += 1
+	if contador == 1 or price < Pcheapest
+		Pcheapest = price
+		Ncheapest = name
+
+Importante que o contador funcione somente abaixo da leitura do nome do produto e do seu respectivo
+preço
+A estratégia constitui em usar o "or" para dizer "quando o contador estiver em 1" ou se o preço digitado
+for menor que o mais barado"...
+Isso aborda tanto uma situação quanto a outra
+
+Se eu usasse o "else", seria obrigado a escrever as mesmas variáveis:
+else:
+	if price < Pcheapest:
+		Pcheapest = price
+		Ncheapest = name
+
+Sobre o Exercício do Caixa Eletrônico (71), o professor se utilizou disto aqui:
+
+quantia -= cédula
+
+Esse tipo de subtração só ocorre até o momento em que o valor não é mais "subtraível" do outro,
+ou seja, não é gerado números negativos
+Então, a partir disto, ele manuseou os valores das cédulas
+Vale lembrar que ele já atibuiu um valor inicial à cédula, um
+de 50 reais.
+
+if quantia >= cedula:       |Isso já é o suficiente
+	quantia -= cedula   |para se lembrar como
+	n_cedula += 1       |foi elaborado o
+else:                       |programa
+	if cedula == 50:    |
+		cedula = 20 | 
+
+FIM DO MUNDO 2!!

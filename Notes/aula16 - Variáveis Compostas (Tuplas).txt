@@ -1,0 +1,227 @@
+17:07 21/06/2022
+
+VARIÁVEIS COMPOSTAS - TUPLAS (OU TUPLES)
+Existem 3 em python: as tuplas, as listas e os dicionários
+aaaaa les goooooo
+
+Vamos lá: quando uma variável é declarada, ela ocupa um espaço na memória
+
+Quando eu quero fazer uma atribuição, eu uso o sinal "=", que significa recebe
+Assim que eu atribuir alguma coisa na variável, esse item vai ocupar o espaço
+reservado na memória para a variável
+
+Porém, se eu atribuir outro item a esta mesma variável, terei sucesso,
+porém o item antigo será deletado daquele espaço e dará lugar ao outro.
+Então, se eu tenho a situação:
+
+lanche = hamburguer
+lanche = suco
+
+O espaço da memória reservado à variável lanche só vai comportar o suco
+Isto significa que eu não posso tomar um suco com hambúrguer juntos
+Não posso colocar duas coisas simultaneamente
+
+Surge a questao:
+Tem como eu criar uma variável que dê para usar mais espaços? Que tenha mais espaços?
+Sim, tem, você já sabe. Você pode colocar um suco, hamburguer, pizza e pudim.
+
+A tupla é uma das estruturas que nos permite fazer isto
+
+A variável lanche é considerada simples, pois só cabe um item dentro
+
+Variáveis compostas, como as tuplas, permitem inserir mais coisas dentro da memória em relação
+à variável
+Lembrando: existem tuplas, listas e dicionários como variáveis compostas
+
+Como você deve imaginar, se existe mais de um item nestas variáveis compostas, é possível
+identificá-las por meio de alguma coisa. O que será?
+Eu identifico por meio de índices.
+Cada de elemento possui uma posição dentro de uma variável composta
+Cada elemento de uma tupla pode ser encontrado da mesma forma que os elementos de uma string, que é
+uma variável composta
+
+Assim como nas strings, eu posso fazer um fatiamento nas variáveis compostas 
+Ex:
+
+lanche = (hamburguer, suco, pizza, pudim)
+print(lanche[2]) 
+>> pizza
+
+print(lanche[:2]) (o último elemento é ignorado)
+>> hamburguer, suco 
+
+print(lanche[1:])
+>> suco, pizza pudim
+
+print(lanche[-1]) |->Modo inverso de encontrar um elemento
+>> pudim          |
+prit(lanche[-2])  |->Existem diversas formas de encontrar um elemento
+>> pizza          |como é possível perceber
+
+Um método como exemplo:
+
+len(lanche) ->Nos mostra a lenght (comprimento) da variável
+>> 4 -> nº de elementos
+
+Algo que dá para fazer é usar uma variável composta
+com uma Estrutura de Repetição
+
+for  ??  in  ??:    
+for c in lanche:  
+-> Como a variável "c" não existia antes, 
+um novo espaço na memória é atribuído a ela pelo Python
+Porém, é somente um espaço
+
+Assim, se eu prosseguir com:
+
+for c in lanche:
+	print(c)
+
+Será mostrado, em sequência, cada elemento por vez, como resultado
+de um looping. Assim sendo, perde-se, no espaço único de memória da variável c
+a primeira comida pela sua sucessora, e assim sucessivamente.
+
+Ok, você já viu que nas listas é possível mudar alguns elementos, trocá-los mesmo
+E nas tuplas? Posso trocar?
+A respostas é NÃOOOOOOOOOO
+
+"As tuplas são IMUTÁVEIS"
+
+Não, eu não posso trocar o pudim por um sorvete
+
+Para mudar, eu tenho que parar o programa e mudar manualmente, mesmo
+
+Ah, e todas as tuplas começam com parênteses (). Nessa eu acertei
+
+Vamos estudar este exemplo:
+
+lanche = 'Hambúrguer', 'Suco', 'Pizza', 'Pudim'
+
+for position, c in enumerate(lanche):
+	print(f'Vou comer {c} em {position}º lugar')
+
+Neste caso, eu enumero a tuple com o método enumerate
+Mas ele nos dá a seguinte configuração
+
+print(enumerate(lanche))
+>> 0, hambúrguer
+   1, suco
+   etc...
+
+Primeiro a posição e depois o respectivo elemento associado a ela
+Então, na função "for", eu preciso usar outra variável
+
+Asim eu obtenho, a posição do elemento com "position" e o nome dele
+com "c"
+
+Neste outro caso...
+
+for a in range(0, len(lanche)):
+	print(f'Vou comer {lanche[a]} em {a}°')
+
+Eu uso o lenght de lanche para definir os limites da função for
+Sendo assim, a variável "a" vai me dizer os números do 0 ao 3, como
+já sabemos
+
+Portanto, para saber separadamente o nome dos elementos, eu formato a variável
+lanche na posição de "a", sabendo que ela altera seu valor a cada looping
+As posições são definidas, como visto anteriormente, pelo valor de "a"
+
+Posso usar o método sorted() nas tuplas? SIM
+Por mais que elas sejam imutáveis, eu ainda posso organizá-las, pois isso
+não altera seus elementos.
+(Isso que significa ser imutável, né)
+Ele põe em ordem, alfabética ou crescente, se tiver números
+Inclusive ele transforma a tupla em lista, usando colchetes
+
+Posso fazer isso
+
+a = 1, 2, 3, 4, 5
+b = 5, 8, 7, 2, 3
+c = a + b
+print(c)
+>> 1, 2, 3, 4, 5, 5, 8, 7, 2, 3
+
+print(len(c))
+>> 10
+
+print(c.count(3)) -->Conto quantos números "3" há
+>> 2
+
+print(c.index(3)) -->Me diz a posição da primeira ocorrência
+>> 2
+
+print(c.index(3, 4))
+Me informa a posição de 3 a partir da posição "4"
+
+Posso ter dados de diferentes tipos em uma tupla
+Ex:
+
+pessoa = 'João', 19, 'M', 54.09
+Posso "somar" duas tuplas desse mesmo modo, mas não posso usar o sorted()
+
+Como não posso mudar uma tupla, posso ao menos deletá-la usando del(), assim
+o programa, ao tentar encontrar a variável para usá-la, dirá que ela não foi definida
+
+16:02 23/06/2022
+Sobre o exercício 77, em que eu devia falar as vogais de cada palavra em uma tupla.
+
+Confesso que achei complicado, mas consegui realizá-lo mesmo assim.
+Só que abusei do método replace, uma vez que cada item de
+uma tupla pode ser alterado. E esse é o problema:
+
+Se cada elemento da tupla pode ser modificado, significa que eles funcionam como listas,
+ou como variáveis compostas, mesmo.
+Era isso que eu tinha esquecido: anteriormente, eu havia anotado que strings funcionam
+como variáveis compostas, ou melhor, como listas, que podiam ser particionadas, terem elementos
+substituídos. Assim sendo, cada caractere de uma string funciona como uma variável dentro de uma 
+lista.
+
+Pois bem, isso era o suficiente para eu entender que eu podia extrair as vogais de cada palavra
+se estabelecesse uma condição para tal. Então vamos à resolução do problema.
+
+conjunto = 'genio', 'teste', 'smurf'
+
+for palavra in conjunto:
+	print(f'\nA palavra "{palavra}" possui as vogais: ', end='')
+
+Neste caso, "for palavra in conjunto" me possibilita, em looping arrancar os elementos
+da tupla. Fácil
+Faltava entender que eu podia ir além, descer mais uma camada de extração:
+Era só criar
+
+for v in palavra:
+	if v in 'aeiou':
+		print(v, end=' ')
+
+Inicialmente a variável palavra vai retirar cada elemento da tupla
+Posteriormente, a variável v vai extrair cada caractere da variável palavra, pois os caracteres
+funcionam, como dito antes, como variáveis dentro de uma lista
+
+A condição de que eu falava era essa "if v in 'aeiou': print(v, end=' ')
+Significa que se a variável "v", ou melhor, se cada caracere estiver entre essas opções 'aeiou',
+então mostre-os, senão, não os mostre. Assim, eu extrairia as vogais de cada palavra
+
+Eu posso brincar com isso de mil maneiras, inclusive invertendo a ordem da condição
+EX: quero mostrar todas as palavras que contém "r"
+
+for letra_r in conjunto:
+	if 'r' in letra_r:
+		print(f'Palavras com a letra "r": {letra_r}')
+
+>>Resultado: Palavras com a letra "r": smurf
+
+Resumo da ópera: Quanto mais funções "for" eu crio envolvendo a variável que eu criei
+anteriormente, mais fundo é meu nível de extração, ou seja, se com a variável p eu 
+retirei as strings da tupla, com a variável v eu retiro os caracteres destas strings
+
+Posso ainda extrair somente as vogais das palavras que possuem as letras r:
+
+for letra_r in conjunto:
+	if 'r' in letra_r:
+		print(f'\nPalavras com a letra "r": {letra_r} -> Suas vogais: ', end='')
+		for c in letra_r:
+			if c in 'aeiou':
+				print(c, end=' ')
+
+Sim, continuarei escrevendo os códigos sem copiar e colar, pois este momento é de aprendizado

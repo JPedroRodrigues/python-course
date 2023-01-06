@@ -1,0 +1,84 @@
+17:27 09/06/2022
+CORES NO TERMINAL (Não é cores é cores)
+
+Padrão ANSI - normalização internacional
+ \_escape sequence
+Começa sempre com uma contra-barra e, em seguida, vem um código
+
+Sempre que eu quiser representar uma cor, eu começo com:
+
+\033[         m 
+
+(a que melhor funciona no Python é a 033)
+Entre os colchetes e o "m" eu ponho um código
+Posso colocar nada, um código até três códigos
+
+O primeiro código é o do comportamento, o código do estilo "style"
+Segundo é o código do texto "text"
+Terceiro é o do background, da cor de fundo
+ Separo todos esse po ponto e vírgula
+
+\033[style; text; back m
+
+Na vdd, posso colocar em ordem qualquer
+
+Ex:
+
+\033[0; 33; 44 m
+
+Tá, mas como crio esse código? De onde ele vem?
+
+Style:
+
+0 - sem estilo nenhum
+1 - põe em negrito
+4 - sublinha
+7 - inverte as config (o que eu fiz para o fundo vai para a letra e vice-versa)
+
+Text:
+
+30 - branco
+31 - vermelho
+32 - verde
+33 - amarelo
+34 - azul 
+35 - roxo
+36 - azul claro (famoso ciano)
+37 - cinza
+
+Back:
+
+40 - branco
+41 - vermelho
+42 - verde
+43 - amarelo
+44 - azul
+45 - roxo
+46 - azul claro
+47 - cinza
+
+Não há preto, mas dá para criar
+
+As cores são do padrão ANSI, que é compatível com o Python
+
+Teste: \033[0;30;41m
+Teste: \033[4;33;46m
+Teste: \033[1;35;43m
+Teste: \033[30;42m
+Teste: \033[m
+Teste: \033[7;40m
+
+Como as cores não terminam com as linhas, eu preciso escrever
+\033[m para voltar ao normal.
+Sabendo disso, eu posso colocar, nas strings, a seguinte formatação
+
+nome = str(input('Diga seu nome: ')).strip()
+print('Seja bien-venido, {}{}{}!'.format('\033[4;31m, nome, '\033[m'))
+
+Dá pra criar uma variável "cores" e dar uma chaves a ela
+
+cores = {'limpa':\033[m' , 'azul':'\033[34m', 'amarelo':'\033[33m'}
+
+Aí sim eu posso fazer
+
+print('hwfhwj{}{}{}'.format(cores['azul'], nome, cores['amarelo']

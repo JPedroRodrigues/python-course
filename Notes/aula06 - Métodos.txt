@@ -1,0 +1,67 @@
+17:19 04/06/2022
+Tipos primitivos
+
+O problema d última aula estava concentrado na seguinte situação:
+
+n1 = input('Digite um número: ')
+n2 = input('Digite outro número: ')
+soma = n1+n2
+print('A soma entre os números é: {}!'.format(soma))
+
+O problema etsva que o + não estava funcionando como adição, mas como concatenação,
+isto é, o sinal juntava os dois números
+
+Como resolver?
+
+Quando escrevemos n1 = input('Digite um número'), o input lê a resposta como uma mensagem
+comum, ou uma "string", como disse o professor (creio que seja isso)
+
+A solução seria abarcar o input com um int(input('Digite..'))
+Teríamos então
+
+n1 = int(input('Digite...'))
+
+A função int transforma a resposta dada ao input em um número inteiro
+
+Me diga então quais são os tipos primitivos logo:
+
+int --> Números inteiros
+float --> Números reais, ou de ponto flutuante wtf
+bool --> valores lógicos ou booleanos (isso eu vou ver na faculdade) - Valores lógicos (True/False) com letras maiúsculas
+str --> valores caracteres ou strings
+
+Forma diferente de usar o print
+
+print('A soma vale', variavel)
+Novo modo
+print('A soma vale {}'.format(variavel))
+
+.format() é um método da string, me permite escrever algo depois das {}
+
+Caso eu queira conferir se o que foi respondido no input é True ou False, coloco no print
+variavel.isnumeric() ou variavel.isalpha(). Isto coloca perguntas a serem respondidas no comando print
+
+Ex:
+
+n = input('Digite algo: ')
+print(n.isnumeric())
+
+".isnumeric" procura averiguar se o que eu escrevi pode ser devidamente lido caso eu inserisse tipo primitivo
+int() no input
+Logo, se eu digito um número, o print diz que é True. Se eu digito letras, diz que é False, pois letras não
+são lidas em um tipo primitivo int()
+
+Alguns questionamentos, ou melhor, métodos: Todo objeto, em string, posssui estes métodos
+
+.isnumeric --> É numérico? Pode ser convertido em número?
+.isalpha --> é uma letra? Pode ser convertido em letra?
+.isalnum --> é alfanumérico (COmo um 3b, 5x)
+.isupper --> Está somente com letras maiúsculas?
+.islower --> está somente em letras minúsculas?
+isprintable --> pode ser impresso?
+
+print(variavel.issomething)
+
+Observações: o # é usado antes de uma linha de código para servir de anotação, então a linha ali
+é inutilizada
+

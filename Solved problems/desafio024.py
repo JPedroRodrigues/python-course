@@ -1,0 +1,10 @@
+city = str(input('Em qual cidade você nasceu? ')).strip()
+corr = city.title()
+print('Ela começa com "Santo"? {}'.format(corr[:5] == 'Santo'))
+print('Ela começa com "Santo"? {}'.format('Santo' in corr))
+from random import choice, shuffle
+print('Aleatório? {}!'.format(choice(['Sim', 'Talvez', 'Não'])))
+nome = str(input('Dê-me o seu nome completo: ')).strip().split()
+shuffle(nome)
+j = ' '.join(nome)
+print('Vou bagunçá-lo! Veja: {}'.format(j))

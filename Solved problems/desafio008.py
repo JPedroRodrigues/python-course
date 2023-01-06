@@ -1,0 +1,6 @@
+n1 = float(input('Me diga a sua altura, em metros: '))
+print('A sua altura em centímetros é {}cm e, em milímetros, {}mm.'.format(n1*100, n1*1000))
+print('{}m pode ser convertido em {}km também.'.format(n1, n1*(pow(10, -3))))
+print('Vale {}hm.'.format(n1*(pow(10, -2))))
+print('Também vale {}dam.'.format(n1*(pow(10, -1))))
+print('Vale {}dm.'.format(n1*10))

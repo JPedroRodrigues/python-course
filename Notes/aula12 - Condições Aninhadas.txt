@@ -1,0 +1,87 @@
+16:07 10/06/2022
+
+Condições aninhadas (colocar algo dentro de algo)
+
+!Podemos colocar estruturas condicionais dentro de estruturas condicionais!
+
+- O exemplo do carro que segue dois caminhos não é o mais completo e complexo
+possível
+
+Em uma estrada, o carro pode seguir muito mais do que dois caminhos
+Dentro de uma estrada pode existir mais de uma estrada
+Ex:
+
+if carro.esquerda()
+	carro.siga()
+	.
+	.
+	.
+elif carro.direita() |
+	carro.siga()    |--> Perceba que podemos usar "elif"
+	carro.esquerda()|
+	.
+	.
+else:
+	carro siga()
+carro.pare()
+
+O "elif" significa "else"+"if", que mostra pra gente uma outra opção dentro
+de um conjunto de opções.
+Mas como assim?
+Como usamos "if" para uma condição e "else" para a sua oposta, ficaria impossível estabelecer
+uma outra condição que se encaixe no mesmo quadro, isto é, não há possibilidade para incluir
+outro "if". Se colocássemos, estaríamos falando de outro contexto.
+
+Não que seja impossível usar outro "if", mas o "elif" nos ajuda a incluir mais condições dentro
+de um só contexto, o que é bem desejável
+
+posso usar elif desse jeito:
+
+nome = str(input('Qual é o seu nome? '))
+
+if nome == 'João Pedro' or nome == 'Joao Pedro':
+	print('Que lindo nome!')
+elif nome in 'Ana Juliana Mariana Fernanda'
+	print('...')
+
+elif variável in 'string' significa que qualquer palavra da string que for utilizada como resposta
+vai ser o suficiente para obedecer a condição
+
+
+Vale citar que eu posso inserir um "if" dentro de outro "if" e , assim, inserindo condições dentro de
+outras condições
+
+
+Sobre o exercício do jogaodr, esta foi a resolução apresentada:
+
+from random import randint
+
+itens = ('Pedra', 'Papel', 'Tesoura')
+
+print('''Opções:
+[0] Pedra
+[1] Papel
+[2] Tesoura
+
+ply = int(input('Escolha um número: '))
+pc = randint(0, 2)
+print('A máquina escolheu: {}'.format(itens[computador]))
+print('O jogador escolheu: {}'.format(itens[jogador]))
+
+Criou-se uma variável "itens", de onde seria retirada as opções "pedra", "papel" e "tesoura"
+Cada string da variável "itens" possui uma posição, que corresponde ao número colocado no print
+que esclarece as opções, como se eu tivesse feito um .split()
+
+Assim, a escolha do jogador "ply" seria o suficiente para selecionar a posição compatível ao elemento
+desejado por ele.
+Em relação o computador, ele vai gerar um número inteiro entre 0 e 2, suprindo assim a condição para
+escolher um elemento nas posições escolhidas
+
+Em jogos em que tanto o jogador e a máquina escolhem as mesmas opções, é interessantíssimo ver esse modo
+de "emparelhamento", que põe tanto jogador quanto máquina para selecionarem as mesmas posições
+
+
+
+
+
+

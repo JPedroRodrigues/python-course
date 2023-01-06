@@ -1,0 +1,142 @@
+18:03 29/06/2022
+
+DICIONÁRIOSSS - a última varíavel composta
+
+A situação-problema no estudo de listas consistia em ter
+que usar as posições nas listas para obter elementos:
+
+dados = list()
+dados.append('Pedro')
+dados.append(25)
+print(dados[0]) >> 'Pedro'
+print(dados[1]) >> 25
+
+Usando listas, eu sou obrigado a usar índices numéricos
+Mas, e se eu quisesse usar índices literais para 
+representá-los?
+
+Bastaria usar DICIONÁRIOS
+
+Dicionários são estruturas compostas parecidas com as tuplas e listas,
+mas com o diferencial de que é possível personalizar os índices, o que significa que posso
+nomeá-los
+
+Para identificar as estruturas compostas:
+Tuplas () - parênteses
+Listas [] - colchetes
+Dicionários {} - chaves
+
+Especificamente para os dicionários:
+
+dados = dict()
+dados = {}
+
+Como essa personalização funcionaria? Simples:
+
+dados = {'nome':'Pedro', 'idade':25}
+'nome' e 'idade' são os identificadores dos seus respectivos elementos
+
+Então, não há mais dados[0] ou dados[1], há dados['nome'] e dados['idade']
+Os índices já não são numéricos, mas literais
+
+Assim:
+print(dados['nome']) >> 'Pedro'
+print(dados['idade']) >> 25
+
+Para adicionar novos elementos, o método .append() não serve, ou seja, ele não
+tem utilidade nos dicionários. Existem formas de adicionar elementos como:
+
+dados['sexo'] = 'M'
+
+O Python vai criar um índice 'sexo' no dicionário e adicionar seu respectivo elemento 'M'
+
+Para remover elementos, eu uso o comando: del dict['key']
+
+del dados['idade']
+
+Um exemplo com nomes de filmes: (Sim, eu posso abrir e fechar as chaves desta maneira)
+
+movies = {'título':'Star Wars',
+          'ano':1977,
+          'diretor':'George Lucas'
+         }
+
+O Python chama estes elementos identificadores de keys (chaves)
+
+Em verdade, "ele", o Python, considera itens, chaves e valores.
+Como entender cada um deles:
+
+print(filme.values()) >> dict_values(['Star Wars', 1977, 'Geroge Lucas']) >> (Criou uma tupla com lista dentro)
+print(filme.keys()) >> dict_keys(['título', 'ano', 'diretor'])
+print(filme.items()) >> dict_items([('título', 'Star Wars'), ('ano', 1977), ('diretor', 'George Lucas')])
+
+Perceba que "Items()" cria uma lista e, depois disto, uma tupla contendo as keys() e os values()
+
+Ou seja:
+"values" são, literalmente, os valores inseridos para cada uma das "keys", que são os índices literais
+dos dicionários. A junção entre os values e keys resulta nos items (não itens, em pt-br), ou seja, ele mostra ambos
+os elementos, sendo, respectivamente, índices e valores.
+
+Posso usar estes conceitos em estruturas de repetições, ou laços, como os "for". O items(), por exemplo, se parece muito
+com o "enumerate()"
+
+Antes de terminar: é possível juntar listas, tuplas e dicionários. Então vamos a uma situação-problema para ilustrar
+como é factual realizar esta simbiose entre estas variáveis compostas.
+
+- Crio uma lista chamada "locadora"
+- Cada elemento desta lista é um dicionário, contendo as informações dos filmes, que escrevemos anteriormente
+- Posso criar mais elementos para a lista, sendo eles dicionários com as informações de filmes
+
+locadora = [{'título': 'Star Wars',
+             'ano': 1977
+             'diretor': 'George Lucas'},
+            {'título': 'Vingadores',
+             'ano': 2012,
+             'diretor': 'Josh Whedom'},
+            {'título': 'Matrix'
+             'ano': 1999
+             'diretor': 'Wachowski'}
+            ]
+Perceba que as posições das listas são determinadas por números, já a dos dicionários, por texto, ou melhor, por chaves literais
+
+print(locadora[0]['ano']) >> 1977
+print(locadora[2]['título']) >> Matrix
+
+O enumerate() está para as tuplas e listas assim como o ".items()" está para os dicionários, pois ele separa e informa os índices
+e seus respectivos valores
+
+Quando eu quiser realizar uma cópia de um dicionário, eu não posso progredir da seguinte forma: dicionário[:]
+
+Dicionários não aceitam cortes deste jeito. Existe um método para realizar esta cópia: ".copy()"
+Também não preciso deletar os elementos do dicionário, pois, como os índices são literalmente os mesmos, há uma substituição
+de valores nas suas respectivas posições.
+
+Assim, "dicionário.copy()" realizará uma cópia, retirando a ligação entre o meu dicionário e uma eventual
+lista ou tupla que for recebê-lo
+
+16:44 01/07/2022
+Batemos, batemos em uma barreira: prof. Guanabara não explicou como organizar os dicionários em uma ordem específica.
+Inclusive, para resolver o exercício 91, em que era necessário organizar os values dos docionários em ordem decrescente,
+eu tive que pesquisar na internet como eu organizo dicionários pelos values(), pois a função sorted() só organiza, naturalmente, as
+keys()
+
+para isso, eu precisava fazer:
+sorted(dados.items(), key=lambda x: x[1], reverse=True)
+
+Porém, existe outra forma em que se utiliza uma biblioteca: operator
+
+from operator import itemgetter
+
+Ao invés de usar "lambda x: x[1]", eu uso um "itemgetter(1)", significando que serão
+analisados os elementos na posição 1 das tuplas criadas pelo método ".items()"
+Sempre bom lembrar que este método cria tuplas para cada conjunto key-value, o que possibilita identificar
+as suas posições numericamente.
+
+Porém, a identificação numérica de cada elemento só é possível com a ajuda de um laço de repetição, isso porque
+as tuplas são postas em uma lista.
+
+Na função "for", posso tanto utilizar o enumerate(), caso queira evidenciar as posições dos jogadores do exercício
+em questão, quanto não usar e mesmo assim declarar duas variáveis. Neste último caso, a 1ª variável receberia  os índices literais
+e a segunda, os valores
+ 
+

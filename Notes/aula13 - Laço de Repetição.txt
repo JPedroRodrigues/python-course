@@ -1,0 +1,272 @@
+09:03 13/06/2022
+
+ESTRUTURAS DE REPETIÇÃO
+
+-Laços
+-Repetições
+-Iterações
+
+Laços de Repetição:
+
+Imaginemos uma plataforma, como um chão de um jogo
+Nele, há um jogador e uma maçã, o primeiro, situado na extrema
+esquerda, o segundo, na extrema direita.
+
+Para chegar até à maçã eu teria que usar o comando passo() até alcançá-la
+e, assim, usar  comando pegar().
+
+Mas, nossa, que demora, né. Preciso usar várias vezes o comando passo(), em repetição
+
+Então, criaremos um laço, uma "estrutura" de repetição, em que eu insiro o comando "passo()"
+e ele passará a se repetir infinitamente. Porém, eu não quero que o personagem ande infinitamente,
+senão, ele cai. Sendo assim, eu devo inseerrir um limite de acordo com as posições das casas que
+compõem a plataforma.
+
+A nossa plataforma começa do 0 até o 10
+Devo começara usar o comando a partir do quadradinho 1, pois tem a ver com deslocamento. Estando no 0 seria
+impossível se deslocar até o 0.
+
+O limite seria do quadradinho 1 até o 10, existiria um contador que iria verificar isso pra mim
+Quando chegar no quadradinho 10, ele para. Assim, eu precisaria inserir o comando pegar() para que ele
+pegue a maçã
+
+Essa estrutura de chama Laço de Repetição ou de Iteração
+	Esse Laço se chama:
+
+	LAÇO COM VARIÁVEL DE CONTROLE
+
+Em português, o comando seria esse
+
+laço c no intervalo(1,0):
+	passo
+pega
+
+Esse "c" seria uma variável de controle
+Eu insiro, dentro do laço, o meu comando "passo", mas com uma indentação
+Por fim, o comando "pega" está fora do laço, mostrando que é o fim do nosso laço
+Mas não quer dizer que ele encerra o laço, só que ele será acionado quando o limite
+de repetição for atingido
+
+Tá,  mas em inglês?
+
+for c in range(1,10): (NÃO SE ESQUEÇA DOS DOIS PONTOS)
+	passo
+pega
+
+Ok, ok, eu entendi. Mas, pensemos desta maneira:
+Se, na plataforma do nosso personagem, existir buracos em que ele pode cair e morrer,
+como iríamos trabalhar estes laços de iteração?
+
+Eu lhe respondo: usaríamos o comando pular quando nos depararmos com esses buracos
+
+Observe: Sem repetição, em uma plataforma de posições 0-10, usaríamos os seguintes comandos
+
+passo
+pula
+passo
+pula
+passo
+pula
+passo
+pega
+
+Perceba que, sequencialmente, o conjunto passo-pula ocorre três vezes
+Posso, então, inseri-lo em um laço, indicando um limite de 0->3
+Termiada a repetição, eu saio do laço com os comando "passo" e "pega"
+
+Em PT:
+
+laço c no intervalo(0,3):
+	passo
+	pula
+passo
+pega
+
+Em EN:
+
+for c in range(0,3):
+	passo
+	pula
+passo
+pega
+
+E se tiverem moedas no meio do trajeto, como pegá-las?
+Uso as condicionais a meu favor, ora:
+
+laço c no intervalo(0, 3):| for c in range(0, 3):
+	se moeda:         |	if moeda:
+		pega      |		pega
+	passo             |	passo
+	pega              |	pega
+passo                     |passo
+pega                      |pega
+
+Por que de 0 a 3? Por que nessa contagem o Python não considera o último número informado,
+assim como ocorre na manipulação de strings, ou seja, ele considera o 0, o 1 e o 2.
+Ainda assim, se trata de "3 unidades".
+
+Se eu quiser repetir a palavra "OI" 6 vezes?
+
+for c in range(1, 6):
+	print('OI')
+Resultado: "OI" 5 vezes
+Somente o
+for c in range(0, 6):
+	print('OI')
+Resultado: "OI" 6 vezes
+
+Algo legal que descobri: se eu importar a função sleep, eu posso usá-la nos meus laços.
+Assim, eu terei um print de "OI" com o intervalo em segundos que eu escolhi.
+
+Vamos procurar entender o conceito por trás dos Laços na escrita em inglês
+
+for c in range(0, 6):
+
+Isso significa que:
+
+Para a varíavel c, com/em uma extensão de 0 a 5, determinado evento
+vai ocorrer limitado a esta faixa de repetição.
+
+Portanto, se eu escrever:
+
+for c in range(0,6):
+	print(c)
+
+Eu iria mostrar justamente a
+faixa que condiciona a nossa variável "c"
+
+Pois bem, e para contar de trás para frente?
+
+for c in range(6, 0, -1):
+	print(c)
+
+#Eu devo inserir este -1 para que o laço passe a funcionar em uma ordem
+inversa
+
+E para pular de 2 em 2?
+for c in range (0, 11, 2)
+# eu insiro esse 2 ao lado da minha faixa, indicando quantos n° eu quero pular
+
+E para mostrar a alguem uma sequência numérica tendo o número dito por ela como
+limite?
+
+n = int(input('Digite um número: '))
+for c in range(0, n+1):
+	print(c)
+Resultado:
+Digitou o número 5
+0 , 1 , 2 , 3, 4, 5
+Se não tivesse colocado o n+1, apareceria até o 4
+
+Em uma estrutura de repetição, se eu colocar um input de 
+um número inteiro, a fim de realizar uma soma, eu devo
+definir uma variável s = 0 e, dentro do laço fazer a seguinte
+operação:
+
+for c in range(0, 4):
+	n = int(input('Digite um número: '))
+	s = s + n
+print('A soma desse números é igual a {}'.format(s))
+Como raios isso fuciona? Eu não sei....
+
+Ou eu escrevo um s += n
+
+	AAACUMULADOOOORRRR
+ Explicação do site Python.org
+ Eu amplio "s" com os conteúdos de "t"
+ Esse "s" é chamado de acumulador, e ele adiciona os valores da variável
+de controle à variável acumuladora (ela recebe os valores de "c")
+
+ s*= n -> informo s com os seus conteúdos repetidos n vezes
+
+També existe um contador:
+contador = 0 (contador recebe zero)
+contador = contador + 1 (a variável "contador" recebe seu próprio valor, adicionando 1 conforme
+o laço flui)
+   \_ Ele sempre adiciona 1 de acordo com o "range" do laço
+
+18:04 13/06/2022
+RESOLVI A QUESTÃO DA TABUADAAAAAAAAAA
+
+simples:
+
+n = int(input('Numero inteiro: '))
+for c in range(1, 11):
+	print('{:2} x {:2} = {}'.format(c, n, n*c))
+
+Lembra quando eu dava print em "c" e o programa mostrava todos
+os números de sua faixa, organizados verticalmente? Entããããooooo
+A sacada está que o número "n" vai multiplicar cada elemento da
+faixa de "c"
+
+Então, n*c significa que o número "n" vai multiplicar cada elemento de c
+Os elementos estão limitados de 1 a 10, então o "n" multiplicará de 1 a 10
+Se eu fizer "n+c", os números de c serão somados ao n
+
+E o resto da lógica por trás disto:
+a primeira formatação, como eu estava tentando fazer, mostra os n° de 1 a 10
+A segunda, somente o número n
+Por fim, o n que multiplica cada elemento da faixa de c
+
+18:22 14/06/2022
+Questão sobre a identificação de qual dos pesos informados é o maior e qual é o menor
+Preciso criar uma lista vazia usando a variável peso:
+
+peso = []
+for c in range(1, 6)
+	peso.append(float(input('Seu peso: ')))
+
+A função .append vai inserir o input do float nas "últimas posições" da nossa lista
+peso. Por isso criamos uma lista "peso" vazia, pois, assim, .append
+faria o trabalho preencher a lista com os valores inseridos no input
+
+18:42 14/06/2022
+Extras: Li no Python.org um pouco sobre listas.
+O engraçado é que eu posso resolver esse ex do peso usando só 3 linhas
+Isso porque o laço de repetição não necessariamente precisa de seu "elemento
+a ser repetido" abaixo do comando "for c in range(x, y)", indentado, mas eu posso
+colocá-lo antes do laço:
+
+peso = [ float(input('Seu peso: ')) for c in range(5)]
+print('Maior peso: {}'.format(max(peso)))
+
+A função max() e min() funcionam só com essas "iterações", que estão dentro da lista
+Ou poderia dizer que elas fornecem o maior e o menor valor, respectivamente, dentro
+de uma lista
+
+Para eu descobrir a posição de um elemento em uma lista, eu uso o método index():
+Ex:
+
+lista = [18, 20, 35, 40]
+print(lista.index(35)
+Resultado: 2 --> Posição 2
+
+19:56 15/06/2022
+Exercício dos números primos:
+
+O professor usou o laço de repetição somente para mostrar a faixa numérica e, caso
+o número fosse divisível por quaisquer números apresentados nesta faixa, ele iria
+apresentar uma cor e seria contado pelo nosso contador; se não, ele apresentaria cor nenhuma.
+A partir disso eu usaria as condições para analisar se o número é primo ou não, pois sabe-se que
+um número primo somente é divido duas vezes.
+
+n = int(input('Digite um número: '))
+contador = 0
+for c in range(1, n+1):
+	if n % c == 0:
+		print('\033[31m', end='')
+		contador = contador + 1
+	else:
+		print('\033[m', end='')
+	print('{}', end=' ')
+if contador == 2:
+	print('\n\033[mNúmero primo!')
+elif contador == 1:
+	print('\n\03[mO número 1 não é considerado primo.')
+else:
+	print('\n\033[m{} não é um número primo.\nEle é divisível {} vezes'.format(n, contador))
+
+Curioso que: 
+- Eu posso adicionar cores através do print
+- Eu posso usar o end=' ' para colocar a faixa de c em uma única linha
+- E que eu sou obrigado a usar \n e \033[m para cancelar os efeitos das cores e da junção de linhas

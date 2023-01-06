@@ -1,0 +1,59 @@
+16:01 03/06/2022
+Primeira aula sobre comandos em Python
+
+Para qualquer mensagem a ser escrita, usamos os delimitadores
+' no início e final da mensagem. Além disso, tudo deve ser envolto
+de parênteses. Vamos ao exemplo
+
+('Olá imundo') -> a função para mostrar a mensagem escrita é PRINT
+
+Sendo assim: print('Olá imundo')
+
+Para operações números, não os consideramos como mensagens, pois, geralmente não os
+mostramos na tela, mas fazemos operações com eles.
+Não há aspas envolvendo as operações
+print(7+4) -> Operação com os números 7 e 4
+
+E como juntar dois números, como se estes fossem mensagens?
+
+print('7'+'4') --> O resultado será "74"
+Podemos usar o s[imbilo de "+" ou uma vígula nestes casos, mas, ainda assim, ambos funcionam
+de formas diferentes 
+
+Exemplos de uso da vírgula
+
+print('Olá',5) --> O result será "Olá 5"
+
+Especialmente neste caso, usar uma mensagem com aspas somada "+" a um número não dá certo,
+então usamos a vírgula
+
+Vamos pensar em variáveis (toda variável é um objeto)
+
+Situação:
+
+nome='Alyssa'
+idade=16
+peso=55
+
+print(nome,idade,peso)
+
+print --> escreva
+input --> leia
+
+Criando interatividade:
+
+nome=input('Qual é o seu nome?')
+idade=input('Quantos anos você tem?')
+peso=input('Quantos quilos você pesa?')
+
+print(nome,idade,peso)
+sinal "=" significar receber algo
+cada variável possui um valor, que é o que eu escrevo para elas
+
+Se você pretende colocar alguma mensagem após a inclusão da variável,
+você pode usar {} e, depois das aspas, inserir .format(variável) para incluí-la
+dentro das{}
+
+Exemplo:
+name = input('Me diga o seu nome: ')
+print('Seja bem recebido, {}, é um prazer tê-lo por aqui!'.format(name))

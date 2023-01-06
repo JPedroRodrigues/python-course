@@ -1,0 +1,126 @@
+17:03 06/06/2022
+
+Módulos
+
+Imaginamos que o corpo humano, enquanto uma máquina, precisa de alimentos (ou  módulos)
+que dão a este sistema a energia necessária para o seu funcionamento
+
+Neste contexto, possuímos diversos grupos de alimentos, dos quais vamos focar em
+bebidas, doces e comidas. A esses tipos, daremos o nome de bibliotecas
+
+Podemos fazer importações a essas bibliotecas, adicionando novos recursos, para que novas funcionalidades
+sejam inseridas
+
+Usamos o comando import para importar bibliotecas
+
+Ex: import bebida --> importamos todas as bebidas da biblioteca
+    import doce   --> o mesmo esquema
+
+E se eu quiser importar só um item da biblioteca?
+R: Inverto a ordem adicionando o comando from
+
+Ex: from doce import pudim
+    from biblioteca import pudim
+
+Em suma, possuímos duas formas de importar: import biblioteca; from biblioteca import doce 
+
+Em python, já temos no pycharm a biblioteca 'math'
+Nesta biblioteca, tenho propriedades como:
+
+MATH:
+ceil -> arredonda para cima determinado valor
+floor -> arredonda para baixo
+trunc -> truncar um número, vai eliminar a virgula pra frente, sem arredondamento
+pow -> potência, como os **
+sqrt -> calcular a raiz quadrada (square root)
+factorial -> calcular a fatorial de um número
+
+Ex: import math
+    from math import sqrt
+    from math import sqrt, ceil
+
+Ex: 
+
+import math
+n = int(input('Digite um número inteiro: '))
+raiz = math.sqrt(n)
+print('A raiz deste número é {}!'.format(raiz))
+
+E se eu quiser arredontar o número? Teremos o print desta forma
+
+print('A raiz deste número é {}.'.format(math.ceil(raiz)))
+
+E se eu quiser utilizar só uma funcionalidade da biblioteca?
+Prosseguiremos da seguinte forma:
+
+from math import sqrt
+n = int(input('Digite um número inteiro: '))
+raiz = sqrt(n) #não preciso adicionar a biblioteca math. antes da funcionalidade neste caso
+print('A raiz de {} é {}.'.format(n, raiz))
+
+Isso significa que eu não poderia usar outras 
+fun. também a não ser que eu adicionasse, 
+colocando vírgula
+
+Usando a biblioteca random
+
+import random
+n = random.random()
+print(n)
+
+O resultado será um número float (real) entre zero e um
+
+se eu por n = random.randint(1,20) receberei um número
+inteiro entre 1 e 20
+
+Quando lidamos com aleatoriedades é interessante usarmos o conceito de listas
+Programando, eu invento listas usando colchetes []
+
+ex:
+import random
+
+a = str(input('Dê o nome de um aluno: '))
+b = str(input('Dê o nome de outro aluno: '))
+c = str(input('Dê o nome do terceiro aluno: '))
+lista = [a, b, c]
+print('Aleatoriamente, {} seria selecionado'.format(random.choice(lista)))
+
+Às vezes, pode acontecer de precisar citar a biblioteca depois da lista
+
+Ex: lista = [a, b, c]
+    random.shuffle(lista)
+    print('Eis a arte de embaralhar! {}'.format(lista))
+
+Embora eu tenha formatado a variável lista normalmente, ela vai aparecer embaralhada
+graças ao shuffle dado na linha de baixo
+
+Posso usar junto com o split, que separa strings, criando listas
+
+deck = 'ace dois tres quatro'.split()
+shuffle(deck)
+print(deck)
+
+Foi mostrado como usar o pygame pra rodar uma música (não consegui instalar -whyy?- mas vou anotar aqui)
+
+import pygame
+pygame.init() --> inicia o pygame
+pygame.mixer.music.load('Nome do arquivo')
+pygame.mixer.music.play() -->rodar o arquivo
+pygame.event.wait() --> esperar o 'evento terminar', a música tocar
+
+Existe também o módulo time
+Posso fazer o computador esperar um pouco pra responder da seguinte forma
+
+from time import sleep
+print('PROCESSANDO...')
+sleep(3) --> 3 equivale a 3 segundos
+
+Existe a biblioteca datetime, que manuseia as datas no geral
+
+Se eu quiser que uma variável assuma a data ou um mês do sistema do usuário
+devo prosseguir da seguinte maneira:
+
+import datetime
+data = datetime.date.today().year
+
+Significa que o ano atual do sistema será exposto na variável

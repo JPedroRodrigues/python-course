@@ -1,0 +1,239 @@
+17:31 06/07/2022
+
+Parte 2 do estudo de funções.
+
+Serão trabalhados os seguintes tópicos:
+- Interactive Help
+- Docstrings
+- Argumentos opcionais 
+- Escopo de Variáveis
+- Retorno de resultados
+
+Vamos aos trabalhos...
+
+INTERACTIVE HELP
+
+É de se pensar que linguagens bem estabelecidas, como Java/php, possuam uma densa documentação acerca dos modos de utilização de
+comandos e bibliotecas. São bem evoluídas e maduras. No python, também  existe uma grande documentação (basta acessar o site
+python.org), porém o diferencial está na Interactive Help, que auxilia durante a escrita dos códigos.
+
+Para isso, basta usar o comando "help()". Se quiser especificar o comando sobre o qual obterá informações, use "help(comando)"
+Além desses modos, existe a "impressão" do doc: print(input.__doc__). Neste caso, conseguiria informações sobre o "input".
+Perceba que se usa o print obrigatoriamente.
+
+DOCSTRINGS
+
+É nada mais do que uma string de uma documentação. Pensar em ajuda interativa nos leva a este ponto.
+Vamos a um exemplo logo de cara:
+
+def contador(start, end, step):
+	c = start
+	while c <= end:
+		print(f'{c}', end=' ')
+		c += step
+	print('The end!')
+
+
+contador(2, 10, 2)
+
+Imaginemos que esta função foi definida. Ainda que seja dito aqui o que cada elemento dela signifique, não se espera que todos os
+que forem usufruir desta funcionalidade entendam imediatamente o que ela representa. Se for usado um help(contador), será que
+isso funciona? Evidentemente que não.
+
+As docstrings servem para que seja possível criar um manual sobre a utilização da função criada/definida. Elas começam exatamente
+depois do comando "def" e são iniciadas com 3 aspas duplas (assim: """).
+
+def contador(start, end, step):
+	"""
+	-> Faz uma contagem, seguindo a mesma lógica de uma PA.
+	:param start: Número inicial da seuqência.
+	:param end: Último número a aparecer na contagem.
+	:param step: Razão ou passo da sequência numérica.
+	:return: Sem retorno.
+	"""
+	c = start
+	while c <= end:
+		print(f'{c}', end=' ')
+		c += step
+	print()
+
+
+contador(1, 10, 3)
+help(contador)
+
+Assim, ao acionar o comando "help()", o python mostrará a docstring criada para a função.
+
+PARÂMETROS OPCIONAIS
+
+Imagine uma funcionalidade que some 3 números: somar(3, 2, 5)
+
+
+def somar(a, b, c):
+	s = a + b + c
+	print(f'A soma vale {s}')
+
+
+somar(3, 2, 5)
+somar(8, 4)  # E se forem colocados apenas 2 números?
+
+8 será atribuído ao parâmetro "a" e o 4, ao "b". Mas, e o parâmetro "c"? Isto gera um erro no programa.
+Para arrumar este erro, basta fazer isto:
+
+
+def somar(a, b, c=0):
+	s = a + b + c
+
+
+Este "c=0" significa: se, por acaso, não for inserido um número para o parâmetro "c", este valerá 0
+
+Este parâmetro=0 é chamado de parâmetro opcional. E vale lembrar que nada me impede de fazer isto com todos os parâmetros.
+
+
+def somar(a=0, b=0, c=0):
+	s = a + b + c
+	print(f'A soma vale {s}')
+
+Os parâmetros opcionais estão contidos em várias das funções utilizadas pelo programador.
+Ex: A função print(), naturalmente, possui o parâmeto "end" configurado da seguinte maneira "end='\n'" indicando que há uma quebra
+de linha. Porém, de maneira totalmente opcional, o programador pode mudar este parâmetro para que não haja quebra de linha, escrevendo
+"end=''" ou "end=' '".
+
+
+ESCOPO DE VARIÁVEIS
+
+(Escopo de declarações...) Basicamente, na programação, escopo é o lugar onde a variável vai existir ou não
+
+Ex:
+
+def teste():
+	print(f'Na função teste, n vale {n}.')
+
+
+# Programa Principal
+n = 2
+print(f'No programa principal, n vale {n}.')
+
+O resultado será o mesmo (n=2) em qualquer um print, o que considera esta variável uma de escopo global.
+
+Se for adicionada uma variável "x = 8" no campo de definição de função, eu posso realizar um print nesta área, mas não poderei
+fazer isto na região do programa principal, pois "x" se limita ao campo de def. Esta seria, então, uma variável de escopo local.
+
+Outro exemplo:
+
+def teste(b):
+	b += 4  # b recebe ele mesmo mais 4
+	c = 2
+	print(f'"a" dentro vale {a}') >> "a" dentro vale 5 -> Pois se trata de uma variável de escopo global
+	print(f'"b" dentro vale {b}') >> "b" dentro vale 9 -> Variável de escopo local (só funciona dentro do "def")
+	print(f'"c" dentro vale {c}') >> "c" dentro vale 2 -> Variável de escopo local
+a = 5
+teste(a)
+
+Quando eu ponho a variável "a" como parâmetro da função "teste()", o parâmetro original "b" copia o valor de "a". Ao realizar uma
+série de modificações como "b += 4", o valor que se altera é o de "b" (local), e não o de "a" (global), que permanece valendo 5.
+
+
+Porém, se você for experiente em outras linguagens de programação (não, eu não sou), você pode se complicar(?) nesta seguinte situação
+
+def teste(b):
+	a = 8
+	b += 4
+	c = 2
+
+
+a = 5
+teste(a)
+
+Se for acrescentada a variável "a = 8" na definição, seria prudente pensar que a variável anterior e global "a = 5" mudaria seu valor
+para 8, né..? 
+
+Errado!
+
+Cria-se uma variável "a = 8" LOCAL e mantém-se, ainda assim, a variável GLOBAL "a = 5"
+
+Neste caso, é justo pensar que o que é criado no escopo local, permanece como variável de escopo local.
+
+Veja que curioso: o PyCharm reclama quando adiciona outra variável com o nome "a", dizendo "Shadows name 'a' from outer scope".
+
+Bom, entendido isto, fica evidente que existe a mesma diferenciação de escopo em chamadas de bibliotecas ou funções.
+
+Mesmo assim, existiria uma forma de tratar a variável "a" como global? Sim! Vejamos:
+
+
+def teste(b):
+	global a
+	a = 8
+	b += 8
+	c = 2
+	print(f'A dentro vale {a}') >> A dentro vale 8
+	print(f'B dentro vale {b}') >> B dentro vale 13
+	print(f'C dentro vale {c}') >> C dentro vale 2
+
+
+a = 5
+teste(a)
+print(f'A de fora vale {a}') >> A fora vale 8
+
+Quando se coloca "global a", o programa desconsidera o valor global "a = 5" e considera a variável local como global (a = 8).
+Se o print de fora estiver na linha acima da função teste(), o "a" continua valendo 5
+
+
+RETORNO DE VALORES 
+
+As funções, em python, podem não retornar, ou retornar um valor. Neste último caso, usa-se o comando "return".
+
+Imaginemos o exemplo da soma de 3 números:
+
+
+def somar(a=0, b=0, c=0):
+	s = a + b + c
+	pritn(f'A soma vale {s}')
+
+
+somar(3, 2, 5)
+somar(6, 7)
+somar(1)
+
+Existe, neste algoritmo, uma grande limitação: Não dá para falar os três resultados da soma de uma vez só.
+Para isso, usa-se um "return s". VEJAMOSSSS:
+
+
+def somar(x=0, y=0, z=0):
+	s = x + y + z
+	return s
+
+
+resp = somar(3, 2, 5)
+print(somar(2, 5, 6)
+r1 = somar(2, 3)
+r2 = somar(10, 15)
+r3 = somar(2, 2)
+print(f'Meus cálculos deram {r1}, {r2}, {r3}')
+
+No momento em que se utiliza um "return s", a variável "s" é retornada para uma outra variável que for receber a função "somar()"
+Neste caso, cria-se a variável "resp", que vai receber o resultado "s" da função "somar()". Pode-se tanto colocar dentro de uma
+variável, quanto de um print(), com a formatação que o programador quiser.
+
+E o comando return não serve só para mostrar resultados numéricos. É possível retornar listas, True ou False, valores literais,
+dicionários, tuplas. 
+Ex:
+
+def par(n=0):
+	if n % 2 == 0:
+		return True
+	else:
+		return False
+
+
+numero = int(input('Digite um número: '))
+print(f'Este número é par? ')  # É possível obter respostas de diferentes modos:
+print(f'Resposta: {par(numero)}')
+if par(numero):
+	print('É par!')
+else:
+	print('É ímpar...')
+
+Sim, esse simples if/else consegue retornar com exatidão o resultado da questão, ao passo que o primeiro print retorna um "True"
+ou "False". Talvez seja porque "if par(numero):" tenha, implícito, um "is True".
+
+

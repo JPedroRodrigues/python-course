@@ -1,0 +1,5 @@
+print('Cálculo de aluguel do automóvel')
+d = int(input('Dias de utilização do veículo: '))
+km = float(input('Quilômetros percorridos pelo automóvel: '))
+p = (d*60)+(km*0.15)
+print('O preço a ser pago é: R${:.2f}'.format(p))

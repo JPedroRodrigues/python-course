@@ -1,0 +1,117 @@
+20:36 08/06/2022
+
+CONDICIONAIS!! (Não, não falamos de punições legais)
+
+Condições Simples e Compostas
+
+Vamos pensar em instruções para um carro em uma estrada única
+
+Nosso objeto é o carro e siga() será o nosso método. Então teremos algo assim:
+
+carro.siga()
+carro.esquerda()
+carro.siga()
+carro.direita()
+carro.siga()
+carro.pare()
+
+Ordem simples seguida de cima para baixo, da esquerda para direita
+
+Porééééémmmm
+Se eu tiver uma estrada com dois caminhos, a coisa muda
+O problema não será sequencial
+
+carro.siga() --> (me deparo com uma bifurcação) --> desvio
+
+se eu for pra esquerda:
+carro.siga()
+carro.direita()
+carro.siga()
+carro.direita()
+carro.siga()
+carro.pare
+
+se eu for pra direita:
+carro.siga()
+carro.esquerda()
+carro.siga()
+carro.esquerda()
+carro.siga()
+carro.pare()
+
+São dois caminhos completamente diferentes, que exigem comandos diferentes
+Crio dentro de um programa dois programas diferentes
+Ambos começam e terminam da mesma forma (carro.siga() -> carro.pare())
+
+Na programação, usamos a condicional if
+
+carro.siga()
+if carro.esquerda(): 
+	[TAB] me leva aos eventos da esquerda
+else:
+	[TAB] me leva aos comandos da direita
+carro.pare()
+
+Sim, usamos TAB para criar uma identação, que põe os comandos em sua respectiva
+condicional
+
+Bloco verde = bloco verdadeiro
+Bloco vermelho = negação do bloco verdadeiro, ocorre caso outro não ocorra
+
+PONHA OS DOIS PONTOS DEPOIS DO IF E ELSE
+
+if carro.esquerda():
+	bloco True
+else:
+	bloco False
+
+A isso, chamamos de Condição
+
+Vamos aos exemplos:
+
+tempo = int(input('Quantos anos tem seu carro?'))
+if tempo <=3:
+	print('Carro novo')
+else:
+	print('Carro Velhão haha')
+print('--FIM--')
+
+Todo evento que estiver alinhado vai ocorrer sempre
+Todo evento identado, vai ocorrer em determinadas situações
+
+Para finalizaaaaar
+
+CONDIÇÃO SIMPLIFICADA (podemos fazer condições em uma linha só)
+
+tempo = int(input('Quantos anos tem seu carro?'))
+print('Carro novo' if tempo<=3 else 'Carro velho')
+print('--FIM--')
+
+Importante ressaltar que eu posso colocar características das variáveis dentro
+da identação do if ou else, como [é o caso do exercício do ano bissexto
+
+import datetime
+ano = int(input('Digite um ano. Para o ano atual, digite 0: '))
+
+if ano == 0
+	ano = datetime.date.today().year
+
+Significa que, se, e somente se, eu digitar o 0, a variável ano vai assumir
+o valor do ano atual, que é requisitado pela biblioteca datetime
+
+No caso do exercício dos 3 números (dizia qual era menor e maior) eu posso fazer isso
+até para diminuir o tamanho do código
+
+a = int(input('Primeiro número: '))
+b = int(input('Segundo número: '))
+c = int(input('Terceiro número: '))
+
+menor = a
+if b < a and b < c:
+	menor = b
+if c < a and c < b:
+	menor = c
+
+Aqui, coloco de início que a variável "menor" receberá a variável "a"
+porém, se a variável b for menor que a "a" e a "c", então a variável "menor"
+receberá "b"

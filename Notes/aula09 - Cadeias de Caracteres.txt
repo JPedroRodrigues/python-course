@@ -1,0 +1,172 @@
+18:09 07/06/2022
+
+Cadeias de Caracteres - como manipularemos cadeia de texto?
+Teremos tratamentos e manipulação de texto
+
+Teeeooooorrrrriiiiaaaaaa
+
+Cadeia de Caracteres: São frases, chamamos de strings
+Sempre usamos ' ou " para criar estas cadeias de caracteres
+
+Vamos aprender a manipular essas strings de diversos modos
+
+Atribuição de string dentro de uma variável
+
+frase = 'Curso em vídeo Python'
+
+Quando faço esse tipo de atribuição, o python coloca esses dados na memória do computador
+Porém, a frase não vai inteira à memória, criam-se mini-espaços que comportarão cada uma das letras
+e espaços nestes bloquinhos
+
+Eis como computamos caracteres. Conta-se o número de caracteres a partir do n°0
+
+Especificando: cada espaço de memória comporta a string, os micro-espaços comportam cada caractere
+
+Sabendo disso, fica muito mais fácil fazermos operações com os caracteres
+
+Ex: Fatiamento --> pegar pedaços de uma string
+       \_ frase[9] --> o python vai pegar a frase e expor somente o 9º caractere da string
+([] identifica listas)
+Ps: letras maiúsculas são diferentes de letras minúsculas, o python faz esta diferenciação
+
+A forma mais simples de fatiamento é pegar uma letra - frase[9]
+Ou ainda: frase[9:13] - pega desde o caractere 9 até o 12, excluindo o 13 (conceito de 'entre')
+E se eu quiser ´pegar o 13°? frase[9:14] - inclui o 9 e exclui o 14
+
+(Isso se chama range também)
+
+Se eu quiser ir até o final da frase, eu coloco a numeração do caractere que não existe no final da frase, ou então o
+último número contado -> frase[9:21]
+
+O que significa frase[9:21:2] -> Começa no 9, exclui o 21, mas salta de 2 em 2 caracteres
+E frase[:5] -> Quando omito o início, começo do primeiro caractere (n°0), excluindo o 5° (do 0 até o 4)
+
+E frase[15:] -> Começo do 15 e omito o final, ou seja, sigo até o final (a mesma coisa do n°21)
+
+E frase[9::3] -> Começa no 9, vai até o final (omiti o meio), pulando de 3 em 3
+
+Análise:
+
+Pegar informações de uma string: qual é o seu tamanho, com qual letra termina, qual a primeira palavra inteira
+
+  len(frase) -> mostrar o comprimento "lenght" --> seria 21 caracteres
+   \_ Em caso de nomes, eu posso misturar o len(nome) - nome.find(' ') para pedir o número de caracteres do nome
+menos os espaços, realizando, assim, uma operação matemática
+ .count('o') -> mostrar quantas vezes a letra "o" minúsculo aparece
+ .count('o', 0, 13) -> conto quantos 'o' tem, limitando os caracteres do 0 ao 12, excluindo o 13
+ .find('deo') -> me diz em que momento ele encontrou o 'deo', somente o primeiro caractere da aparição
+ .find('Android') -> python me retorna um '-1', dizendo que essa string não existe
+ 'Curso' in frase --> operador 'in' --> ele retorna um True, caso tenha esta string na frase
+
+Transformação: via de regra, strings são imutáveis, mas eu posso tentar alterá-las usando alguns métodos, e dando as devidas atribuições
+
+ .replace('Python', 'Android') --> Procura a string 'Python' e substitui pela 'Android'
+ .upper() -> coloca a frase em maiúsculo, mantendo o que já é e alterando o que não é (os parênteses são postos desta forma, sem nenhuma argumento())
+ .lower() -> põe o que estava maiúsculo em minúsculo
+ .capitalize() -> Joga todos os caracteres para minúsculo e só deixa o primeiro em maiúsculo
+ .title() -> Analisa quantas palavras tem a string e faz um capitalize em palavra por palavra
+
+E se a frase for frase = '   Aprenda Python  '
+ .strip() -> Essa função remove os espaços inúteis, aqueles que são postos em excesso
+    \_ Eu já posso acrescentar .strip nas variáveis em que eu colocar um input em string
+     \_ Ex: nome = str(input('Seu nome:')).strip()
+
+Temos uma .rstrip() -> o "r" significa "right", "direita"
+Vários mét odos possuem este "r", fique de olho
+ .rstrip() -> o lado direito da string tem os espaços desnecessários removidos
+ .lstrip() -> remove os espaços da esquerda
+
+Divisão:
+
+ .split() -> Divide consideranto os espaços na string, o que geralmente ajuda a pegar as palavras
+    \_ Ele coloca as palavras dentro de outra cadeida de caracteres, "gerando uma lista"
+     \_ assim, cada palavra é contada como caractere, começando do 0
+      \_ Divide a string em uma lista, em que cada elemento vai ser dividido pelo seu splitador, caracteres de spli que, por padrão, é o espaço
+
+Junção:
+ '-'.join(frase) --> esse método junta todos os elementos de frase e vai adotar "-" como um separador
+
+CURIOSIDADE: se você quiser escrever um texto enorme, você coloca print e três aspas ''' que o texto será incluído
+
+Posso brincar com inversões, combinando métodos
+Ex: frase = 'Curso em Vídeo Python'
+    print(frase.upper().find('VÍDEO')
+Resposta: o programa procura VÍDEO em letras maiúsculas graças ao upper() posto anteriormente
+proucra, posto em letras maiúsc, a palavra solicitada
+
+Se eu quero saber o comprimento "lenght" de uma frase que possui espaços desnecessários, uso
+a seguinte combinação 
+
+frase = '       Curso em Vídeo Python'
+print(len(frase.lstrip()))
+
+Posso fazer divisões das divisões:
+
+frase = 'Curso em vídeo Python'
+div = frase.split()
+print(div[2]) --> o resultado seria o caractere "Vídeo"
+print(div[2][3]) -->  o resultado seria o 4° caractere da palavra Vídeo, isto é, o caractere "e" (de VídEo)
+   \_ Seria a identificação de um caractere dentro de outro caractere
+
+E se eu quiser explicitar as casas de um número???
+
+Existe um padrão para isso: 
+
+num = int(input('Infrome um número: '))
+u = num // 1 % 10
+d = num // 10 % 10
+c = num // 100 % 10
+m = num // 1000% 10
+print('Unidade {}, dezena {}, centena {}, milhar {}'.format(u, d, c, m))
+
+Na hora de ver se uma cidade começa com "Santo", posso usar uma leitura
+mais matemática para responder a questão
+
+Ora, a palavra Santo tem 5 caracteres
+Logo, para começar com Santo, devo averiguar os 5 primeiros caracteres
+Seria verdade se estes 5 fossem iguais a palavra Santo
+
+Assim, temos: 
+city = str(input('Cidade: '))
+print('Começa com "Santo"?'.format(city[:5] == 'Santo'))
+
+Para dizer o último nome de alguém, faremos da seguinte forma:
+
+nome = str(input('Digite o seu nome completo: '))
+print('Último nome', nome[len(nome)-1])
+
+O que você acabou de fazer?
+Como o python conta os caracteres a partir do zero, o último caractere sempre será
+o último caractere menos um, ou seja a lenght da string - 1
+ou melhor, len(string)-1
+como os colchetes dizem a posição, a posição do último nome será definida por:
+nome[len(nome)-1]
+
+12:34 11/06/2022
+Interessante:
+Em um exercício que envolve conversão numérica para binário, hexadecimal ou octal, vale
+lembrar que o python já possui essas funções:
+
+bin(variável)
+hex(variável)
+oct(variável)
+
+Porém, o python mostra esta conversão com uma sigla no início do número, indicando justamente
+o tipo de conversão realizada
+
+A sigla segue este padrão:
+0b: binário
+0x: hexadecimal
+0o: octal
+
+Bom, trata-se de uma sigla alfanumérica, então eu posso fazer um ttratamento de string nela
+Para esconder, então, a sigla, eu limito a função desta maneira:
+
+bin(variável)[2:]
+hex(variável)[2:]
+oct(variável)[2:]
+
+A limitação SEMPRE ocorre ao lado da função desejada
+(Antes eu tentei colocar as [] ao lado da variável, mas 
+a variável era um número inteiro, o  que gerou erro)
+

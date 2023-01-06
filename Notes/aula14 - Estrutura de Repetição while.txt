@@ -1,0 +1,155 @@
+18:57 16/06/2022
+
+O "for" não é a única estrutura de repetição. Existe "while"...
+
+Tá, mas vamos à principal situação hipotética:
+--> Personagem andando na plataforma para pegar a maçã
+
+Em uma situação em que não sabemos o número de blocos entre o
+personagem e a maçã, como eu usaria a estrutura "for"?
+Eu te respondo: não usaríamos a estrutura "for", pois ela exige um limite
+
+Eu tenho que usar outra estrutura: a estrutura "while", que, você bem sabe, significa "enquanto"
+Ex:
+- WHILE(Enquanto não chegar até a maçã, você anda para frente)
+- Quando chegar, você pega
+
+Essa estrutura se chama:
+ESTRUTURA DE REPETIÇÃO COM TESTE LÓGICO 
+(com "for", se chamava estrutura com variável de controle)
+Neste caso, temos uma manipulação, uma ordem, bem racional, para que consigamos seguir em frente
+e tornar possível alcançar o nosso objetivo.
+
+Escrita PT-BR:
+
+enquanto não maçã: |-> "enquanto não chegar na maçã"
+	passo      |-> "passo" está dentro da estrutura de repetição (com teste lógico)
+pega               |-> "pega" está fora da estrutura e só vai ocorrer se a condição for alcançada
+
+Escrita EN:
+
+while not apple:   |-> belíssima tradução
+	passo      |
+pega               |
+
+A vantagem do "while" está em não saber o limite da repetição, não há uma faixa de valores explícita
+
+Em um cenário caótico, cheio de elementos, em que eu não sei um limite até a maçã, poderíamos prosseguir da seguinte maneira:
+while not apple:
+	if plataforma:
+		passo
+	if buraco:
+		pula
+	if moeda:
+		pega
+pega
+
+NO PyCharm:
+
+c = 1             |--> "c = 1" significa "c começa com 1"
+while c < 10:     |--> Enquanto o contador for menor do que 10
+	print(c)  |--> print(c)
+	c = c + 1 |--> adicona +1 ao c
+print('FIM')      |--> quando satisfazer a condição imposta pelo intervalo 1 <=c <10
+                  |teremos um print de 'FIM'
+
+Lembre-se que essas estruturas realizam uma espécie de looping com seus comandos
+Sendo assim, teremos um print de "c" e, em seguide, é adicionado +1 ao contador,
+que é printado em sua nova forma; e segue assim por diante
+
+Eu posso, inclusive, torturar o usuário até que a condição seja satisfeita:
+
+n = 0 
+while n != 5:
+	n = int(input('Digite um número: '))
+print('FIM')
+
+Significa que, até que o número 5 seja digitado, o program seguirá pedindo para
+que seja digitado um número
+
+Essa condição (n !=5/ n==4, etc.) se chama "flag"(?) ou ponto de parada, condição de parada
+
+Outra forma:
+r = 'S'
+while r == 'S':
+	n = int(input('Digite um número: '))
+	r = str(input('Quer continuar? [S/N]: ')).upper()
+print('FIM')
+
+Enquanto o usuário afirmar positivamente ('S') que quer continuar, o programa seguirá
+pedindo para que um valor seja digitado
+
+Um exemplo da "vida real":
+Imagine que alguém quer que você compute a idade de todas as pessoas que estão em uma fila
+Se você sabe a quantidade de pessoas nesta fila, fica muito fácil de se aproveitar da estrutura "for"
+Mas, e se alguém pedir "Anota as idades das pessoas que aparecerem aqui no balcão hoje"?
+Bom, você não sabe quantas pessoas aparecerão, só sabe que serão anotadas as idades dentro do horário
+de funcionamento da empresa.
+Sendo assim, você utiliza a estrutura "while": enquanto o horário de fechamento não chegar, você anota as idades.
+Também seria útil se, mesmo você sabendo quantas pessoas tem na fila, algumas resolvessem sair dela de repente.
+
+number = 1
+par = impar = 0
+while number != 0
+	number = int(input('Digite um number: '))
+	if n != 0:
+		if n % 2 == 0:
+			par += 1
+		else:
+			impar += 1
+print('Foram  informados {} números pares.'.format(par))
+print('Foram informados {} números ímpares.'.format(impar))
+
+Eu posso igualar as variáveis par e impar, uma vez que ambas recebem 0
+Para não considerar 0 como um nº par, eu faço um "if" exclusivo para os números diferentes de 0, e aí eu abordo
+as condições que os enquadram em pares ou ímpares.
+
+15:13 18/06/2022
+Que fique de lição: a estrutura while não possui uma variável de controle, capaz de servir como um pequeno contador
+para fazer as comparações de "maior" e "menor", mas é possível criar uma variável e utilizar a operação contador += 1
+para assim emular a mesma estratégia. 
+Simples e claro. Não sei como você não pensou nisto antes...
+
+No exercício 58, em que eu melhoro o jogo de advinhação de números, eu posso usar este artifício com a estrutura while:
+
+from random import randint
+pc = randint(0, 10)
+acertar = False
+while not acertar:
+	jogador = int(input('Seu palpite: '))
+	if jogador == pc:
+		acertar = True
+print('Parabéns!')
+
+Eu posso criar uma variável para o "acerto", chamando-o de False desde o início. Assim, quando o jogador advinhar o número, a
+variável receberá True! Sendo assim, para realizar o looping, enquanto (while) o jogador não acertar, isto é, enquanto a variável
+não for diferente de False, o programa seguirá pedindo o palpite do jogador.
+Gostou? Ainda deu pra dar dicas, caso o número fosse maior ou menor do que o que foi gerado pelo pc.
+
+Sobre o exercício do cálculo de fatorial:
+Existe uma estratégia legal para deixar o programa mais "esclarecedor" aos olhos humanos
+
+print('CÁLCULO FATORIAL')
+
+n = int(input('Digite um número: '))
+c = n  # contador c recebe a variável n
+produto = 1
+
+print('{}! = '.format(n), end='')
+while c > 0:
+	print('{}'.format(c), end='')
+	print(' x ' if c > 1 else ' = {}'.format(produto), end='')
+	produto *= c
+	c -= 1
+print('\nFim')
+
+Resultado com n == 5:
+5! = 5 x 4 x 3 x 2 x 1 = 120
+
+O legal desse programa está na função if simplificada, que coloca 'x'
+caso o valor de c seja maior que 1, senão, ele coloca um '= {}' em que eu
+formato o resultado final do produto
+
+E detalhe: juntei 3 print's em uma única linha.
+
+

@@ -1,0 +1,58 @@
+19:52 04/06/2022
+Operadores aritméticos (precisam de operantos)
+São operadores binários, pecisam de dois operandos
+
+Adição --> +
+Suntração --> -
+Multiplicação --> *
+Divisão --> /
+Potência --> **
+Divisão inteira --> //
+Resto, ou módulo, da divisão --> %
+
+O "igual" é representado por dois símbolos ==
+O sinal de diferente é representado por !=
+Exemplos:
+5+2==7
+5-2==3
+5*2==10
+5/2==2.5
+5**2==25
+5//2==2
+5%2==1
+
+Ordem de precedêcia - ordem de resolução
+1 - ()
+2 - **
+3 - *, /, //, %
+4 - + e -
+
+Posso fazer números em potência da seguinte forma:
+pow(4,3) --> em que pow significa power e (4, 3) significa 4**3
+
+nome = input('qual é o seu nome')
+print('Prazer em te conhecer, {}!'.format(nome))
+
+Posso colocar a variável nome em 20 caracteres, colocando {:20}
+Posso alinhar dentro destes caracteres para à esquerda {:<20} ou à direita {:>20}
+Posso centralizar {:^20}
+Posso fazer isso aqui {:=^20}, adicionando "=" nos demais caracteres
+
+Se eu quiser limitar o número de casas decimais flutuantes que podem aparecer em um número,
+eu preciso escrever {:.nf}
+O . diz que tem a ver com casas decimais, o f diz que é flutuante
+
+A linha do código é tão grande que moveu a tela aqui me ajudaaaa
+A solução é, para não quebrar a linha, escrever , end=' ')
+
+Ex: print('Meu Deus a linha é muito enorme e {}'.format(n0), end=' ')
+    print(', continuando a mensagem')
+
+Posso ainda colocar algo entre o , end=' ') e isso será inserido quando a "linha acabar"
+Ex: print('Minha nossa, nossa,', end=' >>')
+    print('nossa...')
+
+O resultado: Minha nossa, nossa, >> nossa
+Eu posso criar novas linhas mesmo no meio da linha: \n
+
+Ex: print('Quero parabenizar a \n todos os que \n estavam aqui')

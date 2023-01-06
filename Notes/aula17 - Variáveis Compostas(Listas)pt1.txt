@@ -1,0 +1,173 @@
+16:43 23/06/2022
+AAAAAAAAAAAAAA LISTASSSS FINALMENTEE
+Vimos anteriormente que as tuplas são muito importantes
+para armazenarmos vários elementos
+
+Quando os elementos são colocados em uma tupla, o pc cria
+uma estrutura composta para colocar na memória
+
+lanche = 'hambúrguer', 'suco', 'pizza', 'pudim'
+print(lanche[2])
+lanche[3] = 'banana' --> Não posso substituir elementos de uma tupla
+Pois as tuplas são IMUTÁVEIS
+Poxa, mas como eu resolvo estes problemas?
+Usando listas, meu nobre guerreiro
+
+Para:
+Tuplas ()
+Listas []
+Dicionários {}
+
+lanche = ['hambúrguer', 'suco', 'pizza', 'pudim']
+lanche[3] = 'banana'  # É possível Trocar com listas
+>> lanche = ['hambúrguer', 'suco', 'pizza', 'banana']
+
+Mas, e se eu quiser adicionar novos elementos em uma lista?
+Devo usar o método ".append(elemento)", que adiciona os elementos
+no FINAl da lista
+Ex:
+
+lanche.append('cookie')
+print(lanche)
+>> ['hambúrguer', 'suco', 'pizza', 'banana', 'cookie']
+
+Ok, o .append() insere elementos no final da lista. Mas, e se eu
+quiser adicionar elementos em diferentes posições?
+
+Uso o método .insert(position, elemento) --> O método insert pega 
+elementos novos e cria uma espaço na lista para comportá-los.
+Caso eu queira encaixar elementos usando append e organizá-los depois
+usando insert, eu prosseguirei de forma errada, pois isso duplica os
+elementos, deixando-os no final e na posição em que eu quero.
+Ex:
+
+lanche.insert(0,'hot-dog')
+   \_ Insiro um 'hot-dog' na posição 0
+
+print(lanche)
+>> 'hot-dog', 'hambúrguer', 'suco', 'pizza', 'banana', 'cookie'
+Se o novo elemento ocupa a posição 0, a posição dos demais mudará
+também 
+
+APAGAR ELEMENTOS:
+
+del lanche[3] -> comando "del" 
+lanche.pop(3) -> Método ".pop()", remove, geralmente, o último elemento da lista
+lanche.remove('pizza') -> Método ".remove()", nele, eu tenho que informar o nome do elemento
+
+Em quaisquer possibilidades o elemento será removido e as posições serão redefinidas
+Lembre-se que a função "del" e o comando ".pop()" se valem das posições e o método
+".remove()" se vale do nome do elemento
+
+lanche.pop() -> elimina o último elemento 
+
+Suponhamos que eu tenha usado:
+del lanche[3]
+lanche.pop()
+print(lanche)
+lanche = ['hot-dog', 'hambúrguer', 'suco', 'banana']
+O 3º e último elementos foram removidos
+
+E se eu quiser remover algum que não existe? O programa apresentará erro
+Mas, e se eu não souber se ele está lá? Como eu verifico?
+Então eu uso a função "if"
+
+if 'pizza' in lanche:
+	lanhce.remove('pizza')
+
+Se 'pizza' estiver neste lanche, este elemento será deletado. Uma boa forma de verificação
+
+Posso criar listas através de "ranges"
+Eu posso declarar listas através do comando list()
+
+Então, posso declarar uma lista em um range
+
+valores = list(range(4, 11)) 
+-> Começa em 4 e para em 10
+-> Os valores serão convertidos em elementos de uma lista,
+cada um com sua respectiva posição
+-> Os elementos serão postos dentro da variável composta "valores"
+-> Range cria uma estrutura já organizada, geralmente em ordem crescente
+
+Se eu receber uma lista fora de ordem, eu posso usar o método .sort()
+Ex:
+
+valores = [8, 2, 5, 4, 9, 3, 0]
+valores.sort() --> Organizará tudo em ordem crescente
+Se usa o sort em uma linha à parte, não coloque-o em uma f'string
+
+Você viu que é diferente da função sorted(), até porque ".sort()" é um método
+
+Mas, olha que interessante o que eu posso fazer com o método .sort()
+Se eu quiser a ordem inversa:
+
+valores.sort(reverse=True) 
+
+"reverse=True" é chamado de parâmetro, eu uso esse parâmetro dentro do método
+poderia usar o método .reverse() para inverter a ordem da mesma maneira
+
+"valores.reverse()"
+
+Posso saber o tamanho de uma lista com a famigerada função len()
+Posso pegar o maior valor de uma lista com a função max()
+E saber o menor valor com a função min()
+
+O len(), como você já deve saber e não esquecer, é muito boa em laços
+
+Peculiaridade interessante sobre listas em Python:
+
+Se você iguala duas listas, tudo o que você altera em uma, você altera em outra
+Ex:
+
+a = list(range(6, 13)
+b = a
+b[5] = 0
+print(f'{a}\n{b}')
+>> A alteração de B reflete em A, mesmo que você leia "b recebe a" e isso, em tese,
+não significaria que a mudança de um afeta outro
+Porém, o python realiza uma ligação entre as duas listas
+
+E como eu faço uma cópia de uma lista?
+Simples, eu devo fazer b receber todos os valores de a
+Como?
+
+b = a[:] -> b recebe todos os valores de a
+
+20:57 24/06/2022
+Dica sobre listas:
+Se eu criar uma lista n = [1, 2, 3] e fizer um  print
+print(*n, sep=', ', end='.')
+O * tira os colchetes, o sep=',' acrescenta uma vírgula entre os termos da lista
+e o end='.' coloca um ponto no final
+
+20:31 25/06/2022
+Exercício 83  - sobre a inserção correta de parênteses em expressões matemáticas
+"Meu pecado foi pensar na quantidade e não na ordem dos elementos, mesmo que eles,
+por fim, precisem ser pares". - Chorei T_T
+
+O que anotei sobre ele:
+
+Preciso checar a compatibilidade dos parênteses, não somente o números dele.
+Importa mais a compatibilidade, a ordem dos parênteses, do que somente os números deles.
+"Destrincho" os elementos da nossa expressão, que, por ser str, é uma lista por si só.
+Caso um parênteses aberto for encontrado, ele, e somente ele, será inserido na lista [que criei].
+Se o encontrado for um fechado, eu preciso pensar em uma coisa: existia um elemento 
+na lista, ou não (sabendo que ela só comporta os abertos)?
+Se não tiver, eu adiciono o fechado e termino o looping imediatamente.
+Se tiver, eu elimino o elemento aberto que é compatível com o p. fechado encontrado.
+A lista, para descrever um acerto, precisa ter nenhum elemento em sua posição.
+Esse é um bom meio de averiguar a existência de elementos "pares" - ou compatíveis.
+A peculiaridade deste caso está no fato de que eu analiso a ordem em que os parênteses foram colocados.
+A ordem, na  matemática, para os parênteses importa muito. Alguém precisa vir primeiro.
+
+Exercício 80 - Sobre ordenar números de uma lista sem usar o método ".sort()"
+
+Lembre-se: quaisquer expressões matemáticas massivamente utilizadas são generalizações de um trabalho lógico anterior
+Elas funcionam em qualquer situação em que se utilize dos elementos fornecidos por ela.
+Em resumo, preciso tornar o problema generalizado, sem que haja necessidade de ditar uma posição para o número.
+Isto significa automatizar um processo.
+Criei uma lista, mas não vou adicionar valores imediatamente após a inserção, só depois...
+Crio uma variável comum para a inserir os números.
+Analiso o primeiro termo da mesma forma como antes: ele será o maior e o menor da nossa lista.
+Agora vem uma parte crítica: Não dá para eu, de maneira arbitrária, ditar ondem o número vai entrar.
+Para generalizar, preciso adotar posições universais, que serão menores do que o tamanho da lista

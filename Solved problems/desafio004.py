@@ -1,0 +1,12 @@
+cores = {'azulclaro':'\033[1;36;40m', 'limpa':'\033[m', 'azul':'\033[4;30;44m'}
+print('{}Vamos averiguar algumas infos...{}'.format(cores['azulclaro'], cores['limpa']))
+n0 = input('{}Digite qualquer coisa para mim:{} '.format(cores['azul'], cores['limpa']))
+av = type(n0)
+print('A classe do que você escreveu é: {}'.format(av))
+print('É um número? Resposta:', n0.isnumeric())
+print('É uma letra? Resposta:', n0.isalpha())
+print('É um caractere alfanumérico? Resposta:', n0.isalnum())
+print('Está em maiúsculas? Resposta:', n0.isupper())
+print('Está em letras minúsculas? Resp:', n0.islower())
+print('Tem só espaços?', n0.isspace())
+print('Está capitalizada, isto é, possui uma letra maíscula no início?Resposta:', n0.istitle())

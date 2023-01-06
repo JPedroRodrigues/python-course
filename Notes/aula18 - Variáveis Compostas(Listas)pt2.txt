@@ -1,0 +1,169 @@
+16:23 26/06/2022
+Segunda parte do estudo sobre listas. Gostou da primeira?
+
+dados = list()
+
+O que isso significa para você?
+Que "dados" é uma variável composta, que armazena diversos valores,
+e é mutável. Assim, o comando "list()" cria um espaço na memória, em que serão
+armazenados os dados.
+
+dados.append('Pedro')     | dados(estrutura de lista)
+dados.append(25)          |'Pedro' | 25
+print(dados[0]) - 'Pedro' |   0    |  1
+print(dados[1]) - 25      | Espaços de memória criados para a lista
+
+Vou criar a estrutura "pessoas": pessoas.list()
+Posso dar um append nesta lista também, certo?
+Mas, ainda assim, vamos fazer um pouco diferente: pessoas.append(dados[:])
+
+Aha! Lembra daquela relação entre listas?
+a = list(range(1, 6)
+b = a
+b[2] = 999
+print(b) -> [1, 2, 999, 4, 5]
+print(a) -> [1, 2, 999, 4, 5]
+
+Se eu faço uma variável receber uma lista, ainda que eu fizesse uma mudança
+somente nesta variável, a lista anterior também sofreria a tal mudança.
+Isto porque o Python cria uma ligação entre essas duas estruturas
+
+Para eu evitar isso, eu tenho que fazer uma estrutura receber os valores de outra
+b = a[:] -> Deste modo: "b recebe todos os elementos de a"
+
+
+Da mesma forma, se eu quiser fazer um append de uma lista em outra, preciso fazer
+um append de todos os elementos da lista, e não da lista em si 
+
+Assim, temos: pessoas.append(dados[:])
+Fiz um fatiamento completo dos dados, uma cópia dos dados
+
+Na memória, a lista "pessoas" não vai ter duas posições, como "dados", mas apenas uma só,
+que recebe ambos os elementos.
+
+pessoas
+|'Pedro'| 25  | Representação do espaço da memória do pc
+|    0  |  1  | "Pessoas recebe os dois elementos como um só
+|_______|_____|
+|     0       |
+
+Existe uma lista e dentro dela há outra lista
+E a partir disto posso adicionar novos nomes e idades seguindo o mesmo esquema.
+
+Caso eu adicione um ['JOão', 32], este conjunto ocupará a posição da lista "pessoas"
+E assim por diante....
+
+Posso fazer isso em uma única linha, só
+
+pessoas = [['Pedro', 25], ['Maria', 19], ['João', 32]]
+
+Abri um gande colchete e adicionei a ele 3 listas contendo 2 elementos relacionados
+a nomes e idades, respectivamente
+
+Agora algo que eu vi no site python.org mas não conseguia me lembrar até ver no vídeo da aula
+
+print(pessoas[0][0]) -> Que raios é isso?
+Estou pedindo para o programa mostrar na primeira posição da lista "pessoas", o primeiro elemento
+desta posição, já que temos um caso em que uma lista está dentro de outra lista
+
+Pedi para mostrar o primeiro elemento de "pessoas", que é uma lista, e o primeiro elemento desta lista
+
+Resultado: 'Pedro'
+"Dentro da pessoas[0] será mostrado o item 0"
+
+print(pessoas[1][1]) --> 19
+print(pessoas[2][0]) --> 'João'
+
+Lembrando que os elementos de dados são só 2 (nome/idade), então
+o SEGUNDO colchete, neste caso, vai do 0 até o 1
+
+Professor Guanabara levantou esta dúvida: em pessoas[0], por que eu tenho que considerar os índices 0
+e 1 e não uma variável com nomes "nome" e "idade"? Esse tipo de atribuição, pelo visto, se faz com dicionários
+Por hora, usaremos somente listas
+
+print(pessoas[1]) --> ['Maria', 19]
+
+Sempre lembrando: se eu faço um append de uma lista em outra, sem copiar os elementos, é como se fizesse aquela conexão
+especial entre as duas listas.
+Ex:
+
+galera = list()
+dados = []
+for c in range(5):
+	dados.append(str(input('Nome: ')).strip().tile())
+	dados.append(int(input('Idade: '))
+	galera.append(dados[:])  # Preste atenção
+	dados.clear()
+print(galera)
+
+Crio duas listas: dados recebe nome e idade e galera recebe os elementos de dados
+Por se tratar de um looping, se eu não usar o método clear(), a lista galera comportará
+listas cada vez maiores conforme os elementos forem inseridos. Então, preciso limpar a lista
+dados para que "galera" comporte corretamente as infformações digitadas no esquema "nome-idade"
+
+Se eu não der o método .append(dados[:]), copiando os elementos de "dados", eu crio a ligação
+especial entre as listas. Então, assim, que o método .clear() operar, ele limpará os elementos
+tanto de "dados" quanto de "galera". O resultado: "galera" terá listas vazias
+galera = [[], [], []]
+
+16:23 28/06/2022
+Sobre o exercício 86 (e 87) - Matrizes 3x3
+
+Eu tinha dúvidas sobre como colocar os dados de cada linha em uma única lista, mas vamos lá:
+
+matriz = [[], [], []]
+# Bastava criar uma lista para cada linha de nossa matriz, o que levava a outro problema:
+Como vou adicionar 3 números em cada lista, preenchendo uma de cada vez?
+
+Simples, devo usar duas estruturas de repetição "for", que era uma dúvida que eu tinha até então
+Bom, se eu uso duas, significa que a estrutura externa só vai progredir se a interna progredir totalmente
+Em questões de números, se eu uso duas estruturas "for" com um range(3), eu terei 9 resultados. Em conclusão,
+usar duas destas estruturas nos faz obter o produto dos dois limites postos para as estruturas.
+
+Então, se eu quero obter 9 números para a lista 3x3, sendo 3 linhas e 3 colunas, uso duas estruturas "for" 
+com um range(3). E, se eu quero adicionar 3 valores de uma vez em cada lista, a estrutura externa será voltada
+para estas listas, que receberão os 3 valores da repetição interna.
+Lembrando: cada valor de uma linha de matriz corresponde a uma coluna. Assim, cada um dos 3 números que serão postos
+em uma das 3 listas corresponde às 3 colunas da mariz, respectivamente.
+Cada linha recebe um número correspondente a uma coluna da matriz.
+
+for linha in range(3):
+	for coluna in range(3):
+		matriz[linha].append(int(input(f'Número para a posição[{linha}, {coluna}])))
+
+Algo que eu não havia me tocado: eu posso sim, em uma lista composta, dar append alegando uma posição, que nada mais é
+do que alegar a lista que eu quero que receba os números dentro do limite estabelecido pelo range().
+
+Agora, para elaborar a matriz, eu preciso me lembrar do que eu fiz quando montei a tabela de preços com a tupla.
+Bom, uma tabela de preços, com "nome" e "preço", se vale de duas colunas e um número de linhas definido pela quantidade de produtos.
+Poderíamos dizer que o número de linhas, a princípio, é indefinido, ou melhor, volátil.
+
+Assim, se existe algo que deve ser levado em consideração na hora de elaborar uma tabela ou matriz automaticamente, é o número de linhas.
+Este número vai ser posto como limite no range(). A diferença deste caso para o da tupla, é que, como estou a usar uma lista composta, eu tenho que
+definir a posição da coluna de cada um dos 3 números de cada linha, que é definida, novamente, pelo range().
+
+for linha in range(3):
+	print(f'{matriz[linha][0]}/{matriz[linha][1]}/{matriz[linha][2]}')
+
+Assim, todos os números da linha serão gerados automaticamente, tendo em vista as posições pré-definidas das colunas
+
+Tem outro modo de melhorar a minha matriz:
+
+for linha in range(3):
+	for coluna in range(3):
+		print(f'[{matriz[linha][coluna]}]', end='')
+	print()
+
+Esse print vazio vai quebrar a linha toda vez em que o for completar a sua repetição
+Ou seja, ele digita 3 valores lado a lado e quebra a linha para a próxima contagem
+Um print vazio quebra a linha: print()
+
+Dica interessante: Eu posso dar um append de outra lista em uma lista
+Ex - 89
+
+boletim = []
+nome = str(input('Nome do aluno: '))
+nota = float(input('Nota trimestral: '))
+nota2 = float(input('Nota parcial: '))
+media = (nota+nota2)/2
+boletim.append([nome, [nota, nota2], media])

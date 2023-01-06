@@ -1,0 +1,5 @@
+print('Quantos litros de tinta são necessários para pintar a', end=' ')
+print('sua parede, sabendo que cada litro de tinta é capaz de pintar 2m².')
+l = float(input('Qual é a largura, em metros, desta parede? '))
+a = float(input('Qual é a altura, em metros, desta parede? '))
+print('Para uma área de {:.2f}m² são necessários {:.3f}L de tinta'.format(a*l, (a*l)/2))

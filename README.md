@@ -6,4 +6,4 @@ No, sadly, I'm not posting a python course, but exposing all of my hard work dur
 * **Solved questions**: possibly the most important thing here;
 * **Lesson files/notes**: every single note which I did during the course, including some code.
 
-❗ Be aware that everything here is written in **brazilian portuguese**.
+❗ Be aware that all files are written in **brazilian portuguese**.
